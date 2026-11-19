@@ -19,12 +19,18 @@ export default function ApplicationOverlay({ open, onClose }) {
     const name = String(data.get("name") || "").trim();
     const phone = String(data.get("phone") || "").replace(/\D/g, "");
     const email = String(data.get("email") || "").trim();
+    const revenue = String(data.get("revenue") || "");
+    const budget = String(data.get("budget") || "");
 
     if (!name) return setError("Please enter your name.");
     if (phone.length < 10)
       return setError("Please enter a valid 10-digit WhatsApp number.");
     if (!/^\S+@\S+\.\S+$/.test(email))
       return setError("Please enter a valid email.");
+    if (data.get("brand") === "Company brand" && !revenue)
+      return setError("Please select your monthly revenue range.");
+    if (!budget)
+      return setError("Please answer the package investment question.");
 
     setError("");
     setSubmitted(true);
@@ -55,6 +61,7 @@ export default function ApplicationOverlay({ open, onClose }) {
             <li>Unga details confidential-ah irukkum.</li>
             <li>Our team reviews every application.</li>
             <li>Selected applicants get a strategy call.</li>
+            <li>Socialdaa packages start from ₹1 lakh + GST.</li>
           </ul>
         </div>
 
@@ -99,6 +106,28 @@ export default function ApplicationOverlay({ open, onClose }) {
             </select>
             <label>Instagram / LinkedIn (optional)</label>
             <input name="social" placeholder="@handle or profile link" />
+            <label>
+              Monthly revenue{" "}
+              <span className="optional">(select if applying with a company)</span>
+            </label>
+            <select name="revenue">
+              <option value="">Select a range</option>
+              <option>₹1 lakh – ₹5 lakhs</option>
+              <option>₹5 lakhs – ₹10 lakhs</option>
+              <option>₹10 lakhs – ₹15 lakhs</option>
+              <option>₹15 lakhs – ₹20 lakhs</option>
+              <option>₹20 lakhs – ₹25 lakhs</option>
+              <option>₹25 lakhs+</option>
+            </select>
+            <label>
+              Are you comfortable investing ₹1 lakh + GST in personal branding?
+            </label>
+            <select name="budget">
+              <option value="">Select an option</option>
+              <option>Yes, ₹1 lakh + GST is within my budget</option>
+              <option>I am open to discussing the right package</option>
+              <option>Not at this stage</option>
+            </select>
             <div className="form-error">{error}</div>
             <button className="btn form-submit" type="submit">
               Submit Application
