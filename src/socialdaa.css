@@ -47,7 +47,7 @@ em {
   -webkit-box-decoration-break: clone;
 }
 section {
-  padding: 130px 0;
+  padding: 96px 0;
 }
 .eyebrow {
   font-size: 12px;
@@ -214,7 +214,7 @@ section {
   margin: 0 auto 50px;
 }
 .work-section {
-  padding-top: 20px;
+  padding: 64px 0 72px;
 }
 .work-section h2 {
   max-width: 1050px;
@@ -298,7 +298,7 @@ section {
   font-size: 12px;
 }
 .tap {
-  margin: 34px 0 36px;
+  margin: 24px 0 28px;
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -385,7 +385,7 @@ section {
   padding: 10px 0;
 }
 .testimonial-section {
-  padding-top: 20px;
+  padding: 88px 0;
 }
 .testimonial-slide {
   animation: up 0.6s both;
@@ -546,13 +546,14 @@ section {
     rgba(220, 177, 74, 0.2),
     transparent
   );
+  padding: 96px 0;
 }
 .final-cta h2 {
   margin: 0 auto 44px;
   max-width: 980px;
 }
 footer {
-  padding: 46px 0 120px;
+  padding-top: 40px;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 14px;
@@ -846,6 +847,7 @@ footer a {
 }
 .audience-section {
   background: linear-gradient(145deg, #0b0812, #050505);
+  padding: 88px 0;
 }
 .audience-heading {
   display: grid;
@@ -864,7 +866,7 @@ footer a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin-top: 48px;
+  margin-top: 36px;
 }
 .audience-card {
   display: flex;
@@ -924,6 +926,7 @@ footer a {
 .how-section {
   background: #08080b;
   overflow: hidden;
+  padding: 88px 0;
 }
 .how-grid {
   display: grid;
@@ -1024,118 +1027,23 @@ footer a {
 }
 @media (max-width: 860px) {
   section {
-    padding: 84px 0;
+    padding: 64px 0;
   }
-  .hero-visual {
-    width: 100%;
-    height: 60vh;
-    bottom: auto;
-  }
-  .hero-glow {
-    background: linear-gradient(
-      0deg,
-      #000 4%,
-      rgba(0, 0, 0, 0.6) 38%,
-      transparent 80%
-    );
-  }
-  .top {
-    padding: 22px 20px;
-  }
-  .hero-content {
-    width: 100%;
-    padding: calc(60vh - 200px) 22px 56px;
-  }
-  .hero-content h1 {
-    font-size: clamp(38px, 11vw, 60px);
-  }
-  .btn-wide {
-    width: 100%;
-  }
-  .founder-grid,
-  .application-grid {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-  .founder-photo {
-    max-width: 300px;
-  }
-  .logos {
-    grid-template-columns: 1fr 1fr;
-    margin-top: 60px;
+  .work-section,
+  .audience-section,
+  .testimonial-section,
+  .how-section,
+  .final-cta {
+    padding: 56px 0;
   }
   .reels {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: 64%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    margin-left: -24px;
-    margin-right: -24px;
-    padding: 0 24px;
+    margin-top: 32px;
   }
-  .reel {
-    scroll-snap-align: center;
-  }
-  .objection-card {
-    flex-basis: 78%;
-  }
-  .stats b {
-    font-size: 26px;
-  }
-  .hero-proof {
-    display: none;
-  }
-  .hero-eyebrow {
-    margin-bottom: 18px;
-  }
-  .hero-showreel {
-    top: -2vh;
-  }
-  .showreel-label {
-    top: 18%;
-  }
-  .showreel-caption {
-    bottom: 16%;
-  }
-  .urgency-grid,
-  .audience-heading {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .agency-proof-strip {
-    grid-template-columns: 1fr;
-    margin-top: 44px;
-  }
-  .agency-proof-strip div {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .agency-proof-strip div:last-child {
-    border-bottom: 0;
-  }
-  .process-grid {
-    grid-template-columns: 1fr 1fr;
+  .tap {
+    margin: 20px 0 24px;
   }
   .audience-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .how-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "title title" "metrics story" "quote quote";
-    gap: 40px 24px;
-  }
-  .how-metrics {
-    gap: 26px;
-  }
-  .how-title h2 {
-    font-size: 56px;
-  }
-  .how-portraits {
-    height: 240px;
-  }
-  .how-story p {
-    font-size: 16px;
+    margin-top: 28px;
   }
 }
 @media (max-width: 520px) {
