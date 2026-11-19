@@ -246,10 +246,7 @@ export default function ApplicationOverlay({ open, onClose }) {
                 />
 
                 <label>Instagram / LinkedIn (optional)</label>
-                <input
-                  name="social"
-                  placeholder="@handle or profile link"
-                />
+                <input name="social" placeholder="@handle or profile link" />
 
                 <label>
                   What are your primary expectations from our services?
@@ -264,7 +261,9 @@ export default function ApplicationOverlay({ open, onClose }) {
 
                 <label>
                   Monthly revenue{" "}
-                  <span className="optional">(select if applying with a company)</span>
+                  <span className="optional">
+                    (select if applying with a company)
+                  </span>
                 </label>
                 <select name="revenue">
                   <option value="">Select a range</option>

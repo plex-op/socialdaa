@@ -40,32 +40,13 @@ export function UrgencySection() {
   return (
     <section className="urgency-section">
       <div className="wrap">
-        <div className="urgency-grid">
+        <div className="urgency-grid urgency-grid-simple">
           <div>
             <div className="eyebrow">Your market is not waiting</div>
             <h2>
               Your competitors are becoming familiar.{" "}
               <span className="highlight">Are you?</span>
             </h2>
-          </div>
-          <p>
-            In every industry, people choose the expert they already know and
-            trust. The right content turns your experience into authority,
-            visibility and demand - before the first sales conversation.
-          </p>
-        </div>
-        <div className="agency-proof-strip">
-          <div>
-            <strong>Authority</strong>
-            <small>Position yourself as the trusted expert</small>
-          </div>
-          <div>
-            <strong>Visibility</strong>
-            <small>Stay consistently present in your market</small>
-          </div>
-          <div>
-            <strong>Demand</strong>
-            <small>Attract better clients and opportunities</small>
           </div>
         </div>
       </div>
