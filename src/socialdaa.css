@@ -737,7 +737,7 @@ footer a {
 }
 .application-back-step {
   display: block;
-  margin: 12px auto 0;
+  margin: 8px auto 2px;
   border: 0;
   background: transparent;
   color: var(--muted);
@@ -1087,12 +1087,8 @@ footer a {
   margin-top: 8px;
 }
 .application-form-step-two .application-back-step {
-  margin-top: 8px;
-}
-.application-form-step-two .form-submit {
-  min-height: 48px;
-  height: 48px;
-  margin-top: 8px;
+  margin: 8px auto 2px;
+  min-height: 20px;
 }
 @media (max-width: 860px) {
   section {
@@ -1277,5 +1273,40 @@ footer a {
   }
   .footer-row {
     flex-direction: column;
+  }
+}
+@media (max-width: 620px) {
+  .application-overlay {
+    align-items: end;
+    padding: 0;
+  }
+  .application-modal {
+    width: 100%;
+    max-height: 94svh;
+    overflow-y: auto;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 24px 24px 0 0;
+  }
+  .application-modal-header {
+    padding: 14px 18px 6px;
+  }
+  .application-modal-header p {
+    display: block;
+  }
+  .application-form,
+  .application-form-step-two {
+    padding: 6px 18px 18px;
+  }
+  .application-form-step-two .application-back-step {
+    min-height: 24px;
+    margin: 8px auto 4px;
+  }
+  .application-form-step_two .form-submit {
+    width: 100%;
+    height: 48px;
+    min-height: 48px;
+    margin: 4px 0 0;
   }
 }
