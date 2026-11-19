@@ -222,74 +222,59 @@ export default function ApplicationOverlay({ open, onClose }) {
                 onSubmit={submit}
                 noValidate
               >
-                <div className="application-field-row">
-                  <div>
-                    <label>What brand do you want to build?</label>
-                    <select name="brand">
-                      <option>Personal brand</option>
-                      <option>Company brand</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>I am a…</label>
-                    <select name="role">
-                      <option>Founder</option>
-                      <option>MD / CEO</option>
-                      <option>CXO</option>
-                      <option>Coach / Consultant</option>
-                      <option>Professional / Expert</option>
-                      <option>Creator</option>
-                      <option>Fashion / Lifestyle</option>
-                    </select>
-                  </div>
-                </div>
+                <label>What brand do you want to build?</label>
+                <select name="brand">
+                  <option>Personal brand</option>
+                  <option>Company brand</option>
+                </select>
 
-                <div className="application-field-row">
-                  <div>
-                    <label>What profession or business are you in?</label>
-                    <input
-                      name="profession"
-                      placeholder="Example: Dermatologist, Interior Designer, Startup"
-                    />
-                  </div>
-                  <div>
-                    <label>Instagram / LinkedIn (optional)</label>
-                    <input
-                      name="social"
-                      placeholder="@handle or profile link"
-                    />
-                  </div>
-                </div>
+                <label>I am a…</label>
+                <select name="role">
+                  <option>Founder</option>
+                  <option>MD / CEO</option>
+                  <option>CXO</option>
+                  <option>Coach / Consultant</option>
+                  <option>Professional / Expert</option>
+                  <option>Creator</option>
+                  <option>Fashion / Lifestyle</option>
+                </select>
 
-                <div className="application-field-row">
-                  <div>
-                    <label>
-                      What are your primary expectations from our services?
-                    </label>
-                    <select name="expectations">
-                      <option value="">Select your primary expectation</option>
-                      <option>Visibility</option>
-                      <option>Authority</option>
-                      <option>Sales Growth</option>
-                      <option>All of the above</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>
-                      Monthly revenue{" "}
-                      <span className="optional">(if company)</span>
-                    </label>
-                    <select name="revenue">
-                      <option value="">Select a range</option>
-                      <option>₹1 lakh – ₹5 lakhs</option>
-                      <option>₹5 lakhs – ₹10 lakhs</option>
-                      <option>₹10 lakhs – ₹15 lakhs</option>
-                      <option>₹15 lakhs – ₹20 lakhs</option>
-                      <option>₹20 lakhs – ₹25 lakhs</option>
-                      <option>₹25 lakhs+</option>
-                    </select>
-                  </div>
-                </div>
+                <label>What profession or business are you in?</label>
+                <input
+                  name="profession"
+                  placeholder="Example: Dermatologist, Interior Designer, Startup"
+                />
+
+                <label>Instagram / LinkedIn (optional)</label>
+                <input
+                  name="social"
+                  placeholder="@handle or profile link"
+                />
+
+                <label>
+                  What are your primary expectations from our services?
+                </label>
+                <select name="expectations">
+                  <option value="">Select your primary expectation</option>
+                  <option>Visibility</option>
+                  <option>Authority</option>
+                  <option>Sales Growth</option>
+                  <option>All of the above</option>
+                </select>
+
+                <label>
+                  Monthly revenue{" "}
+                  <span className="optional">(select if applying with a company)</span>
+                </label>
+                <select name="revenue">
+                  <option value="">Select a range</option>
+                  <option>₹1 lakh – ₹5 lakhs</option>
+                  <option>₹5 lakhs – ₹10 lakhs</option>
+                  <option>₹10 lakhs – ₹15 lakhs</option>
+                  <option>₹15 lakhs – ₹20 lakhs</option>
+                  <option>₹20 lakhs – ₹25 lakhs</option>
+                  <option>₹25 lakhs+</option>
+                </select>
 
                 <label>
                   Are you comfortable investing ₹1 lakh + GST in personal

@@ -598,7 +598,7 @@ footer a {
 }
 .application-modal {
   position: relative;
-  width: min(620px, calc(100vw - 32px));
+  width: min(520px, calc(100vw - 32px));
   max-height: calc(100svh - 48px);
   overflow-y: auto;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1067,308 +1067,106 @@ footer a {
   font-weight: 800;
 }
 .application-form-step-two {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 14px;
-  align-items: end;
-}
-.application-form-step-two label,
-.application-form-step-two .form-error,
-.application-form-step-two .application-back-step,
-.application-form-step-two .form-submit {
-  grid-column: 1 / -1;
+  display: block;
+  padding-bottom: 22px;
 }
 .application-form-step-two label {
-  margin-top: 7px;
-  margin-bottom: 5px;
+  height: auto;
+  min-height: 18px;
+  margin: 10px 0 5px;
   font-size: 10px;
+  align-items: flex-start;
 }
 .application-form-step-two input,
 .application-form-step-two select {
-  min-height: 42px;
-  height: 42px;
-  padding: 9px 10px;
-  font-size: 13px;
+  min-height: 48px;
+  height: 48px;
+  padding: 10px 12px;
+  font-size: 14px;
 }
 .application-form-step-two .form-error {
-  min-height: 12px;
-  margin-top: 5px;
-  line-height: 1;
+  min-height: 16px;
+  margin-top: 8px;
 }
 .application-form-step-two .application-back-step {
-  margin-top: 2px;
-  line-height: 1;
+  margin-top: 8px;
 }
 .application-form-step-two .form-submit {
-  margin-top: 2px;
-  min-height: 38px;
-  height: 38px;
-  padding: 6px 12px;
-}
-.application-field-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 2px;
-}
-.application-field-row label {
-  min-height: 24px;
-  margin: 5px 0 4px;
-  font-size: 9px;
-  line-height: 1.25;
-}
-.application-field-row input,
-.application-field-row select {
-  min-height: 42px;
-  height: 42px;
-  padding: 9px 10px;
-  font-size: 13px;
-}
-.application-field-row > div {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.application-field-row label {
-  height: 18px;
-  display: flex;
-  align-items: flex-end;
-  margin: 0 0 4px;
-  white-space: normal;
-}
-.application-field-row input,
-.application-field-row select {
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-.application-form-step-two > label,
-.application-form-step-two > select {
-  grid-column: 1 / -1;
-  width: 100%;
-  box-sizing: border-box;
-}
-.application-form-step-two > label {
-  height: 18px;
-  display: flex;
-  align-items: flex-end;
-  margin: 4px 0 4px;
-}
-.application-form-step-two > select {
-  margin: 0;
+  min-height: 48px;
+  height: 48px;
+  margin-top: 8px;
 }
 @media (max-width: 860px) {
-  section {
-    padding: 64px 0;
-  }
-  .wrap {
-    padding: 0 20px;
-  }
-  .hero {
-    min-height: 760px;
-  }
-  .hero-visual {
-    width: 100%;
-    height: 43%;
-    min-height: 300px;
-  }
-  .hero-glow {
-    background: linear-gradient(
-      180deg,
-      transparent 20%,
-      rgba(0, 0, 0, 0.2) 55%,
-      #000 100%
-    );
-  }
-  .top {
-    padding: 20px;
-  }
+  section { padding: 64px 0; }
+  .wrap { width: 100%; padding: 0 20px; }
+  .hero { min-height: 760px; }
+  .hero-visual { width: 100%; height: 43%; min-height: 300px; }
+  .hero-glow { background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,.2) 55%, #000 100%); }
+  .top { padding: 20px; }
   .hero-content {
     width: 100%;
     min-height: 760px;
     justify-content: flex-end;
+    align-items: flex-start;
     padding: 330px 20px 44px;
   }
-  .hero-content h1 {
-    max-width: 620px;
-    font-size: clamp(42px, 10vw, 62px);
-    line-height: 1;
-  }
-  .hero-proof {
-    display: none;
-  }
-  .showreel-label {
-    top: 18%;
-  }
-  .showreel-caption {
-    bottom: 12%;
-  }
+  .hero-content h1 { max-width: 620px; font-size: clamp(42px,10vw,62px); line-height: 1; }
+  .hero-proof { display: none; }
+  .sub { font-size: 17px; margin: 22px 0 8px; }
+  .tagline { margin-bottom: 24px; }
+  .service-line { margin-bottom: 18px; }
+  .btn-wide { width: 100%; }
   .reels {
+    max-width: none;
     margin: 32px -20px 0;
     padding: 0 20px 8px;
     grid-template-columns: none;
     grid-auto-flow: column;
-    grid-auto-columns: min(72vw, 310px);
+    grid-auto-columns: min(72vw,310px);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
   }
-  .reel {
-    scroll-snap-align: center;
-  }
+  .reel { scroll-snap-align: center; }
   .urgency-grid,
-  .audience-heading {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .agency-proof-strip {
-    grid-template-columns: 1fr;
-    margin-top: 40px;
-  }
-  .agency-proof-strip div {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .agency-proof-strip div:last-child {
-    border-bottom: 0;
-  }
-  .audience-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .audience-heading { grid-template-columns: 1fr; gap: 28px; }
+  .agency-proof-strip { grid-template-columns: 1fr; margin-top: 40px; }
+  .agency-proof-strip div { border-right: 0; border-bottom: 1px solid var(--line); }
+  .agency-proof-strip div:last-child { border-bottom: 0; }
+  .audience-grid { grid-template-columns: 1fr 1fr; }
   .how-grid {
     grid-template-columns: 1fr;
     grid-template-areas: "title" "metrics" "story" "quote";
     gap: 36px;
   }
-  .how-title h2 {
-    font-size: clamp(48px, 12vw, 72px);
-  }
-  .how-metrics {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 14px;
-  }
-  .metric-icon {
-    width: 52px;
-    height: 52px;
-  }
-  .how-metric strong {
-    font-size: 28px;
-  }
-  .how-metric small {
-    font-size: 13px;
-  }
-  .how-portraits {
-    height: 240px;
-  }
-  .how-story p {
-    font-size: 16px;
-  }
+  .how-title h2 { font-size: clamp(48px,12vw,72px); }
+  .how-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 14px; }
+  .how-metric { align-items: flex-start; }
+  .metric-icon { width: 52px; height: 52px; }
+  .how-metric strong { font-size: 28px; }
+  .how-metric small { font-size: 13px; }
+  .how-portraits { height: 240px; }
+  .how-story p { font-size: 16px; }
+  .testimonial-slide blockquote { font-size: clamp(24px,7vw,36px); }
+  .footer-row { align-items: flex-start; }
 }
 @media (max-width: 520px) {
-  .wrap {
-    padding: 0 18px;
-  }
+  section { padding: 56px 0; }
+  .wrap { padding: 0 18px; }
+  h2 { font-size: clamp(34px,10vw,48px); }
   .hero,
-  .hero-content {
-    min-height: 720px;
-  }
-  .hero-content {
-    padding: 300px 18px 36px;
-  }
-  .hero-content h1 {
-    font-size: clamp(38px, 11vw, 52px);
-  }
-  .sub {
-    font-size: 16px;
-  }
-  .reels {
-    margin-left: -18px;
-    margin-right: -18px;
-    padding-left: 18px;
-    padding-right: 18px;
-    grid-auto-columns: 78vw;
-  }
-  .urgency-grid h2,
-  .audience-heading h2 {
-    font-size: 38px;
-  }
+  .hero-content { min-height: 720px; }
+  .hero-content { padding: 300px 18px 36px; }
+  .hero-content h1 { font-size: clamp(38px,11vw,52px); }
+  .sub { font-size: 16px; }
+  .tagline { font-size: 14px; }
+  .reels { margin-left: -18px; margin-right: -18px; padding-left: 18px; padding-right: 18px; grid-auto-columns: 78vw; }
   .audience-grid,
-  .how-metrics {
-    grid-template-columns: 1fr;
-  }
-  .how-portraits {
-    height: 190px;
-  }
-}
-@media (max-width: 620px) {
-  .application-overlay {
-    align-items: end;
-    padding: 0;
-  }
-  .application-modal {
-    width: 100%;
-    max-height: 92svh;
-    overflow-y: auto;
-    border-right: 0;
-    border-bottom: 0;
-    border-left: 0;
-    border-radius: 24px 24px 0 0;
-  }
-  .application-modal-header {
-    padding: 18px 20px 8px;
-  }
-  .application-kicker {
-    margin-bottom: 8px;
-  }
-  .application-modal-header h2 {
-    font-size: 34px;
-  }
-  .application-modal-header p {
-    display: block;
-    margin-top: 8px;
-    font-size: 14px;
-  }
-  .application-progress {
-    margin-top: 12px;
-  }
-  .application-progress span {
-    width: 30px;
-    height: 30px;
-  }
-  .application-form {
-    padding: 6px 20px 18px;
-  }
-  .application-field-row {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-  .application-field-row label,
-  .application-form-step-two > label {
-    height: auto;
-    min-height: 18px;
-    margin: 8px 0 5px;
-    font-size: 9px;
-    align-items: flex-start;
-  }
-  .application-field-row input,
-  .application-field-row select,
-  .application-form-step-two > select {
-    min-height: 46px;
-    height: 46px;
-    padding: 10px 12px;
-    font-size: 14px;
-  }
-  .application-form-step-two .form-error {
-    min-height: 16px;
-    margin-top: 8px;
-  }
-  .application-form-step-two .application-back-step {
-    margin-top: 6px;
-  }
-  .application-form-step-two .form-submit {
-    min-height: 48px;
-    height: 48px;
-    margin-top: 8px;
-  }
+  .how-metrics { grid-template-columns: 1fr; }
+  .audience-card { padding: 16px; }
+  .how-portraits { height: 190px; }
+  .how-title h2 { font-size: 48px; }
+  .how-metric strong { font-size: 25px; }
+  .testimonial-person { font-size: 14px; }
+  .carousel-controls { margin-top: 32px; }
+  .footer-row { flex-direction: column; }
 }
