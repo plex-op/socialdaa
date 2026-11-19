@@ -201,10 +201,9 @@ export function WorkSection({ onApply }) {
   return (
     <section className="center-section work-section" id="work">
       <div className="wrap">
-        <div className="eyebrow">Built and run for you</div>
+        <div className="eyebrow">Client milestone videos</div>
         <h2>
-          We script. We shoot. We edit.{" "}
-          <span className="highlight">You show up.</span>
+          The growth they achieved <span className="highlight">with Socialdaa.</span>
         </h2>
         <div className="reels">
           {videos.map((video, index) => (
@@ -254,7 +253,7 @@ export function WorkSection({ onApply }) {
             </div>
           ))}
         </div>
-        <p className="tap">Tap a reel to watch with sound</p>
+        <p className="tap">Tap a milestone to watch their story with sound</p>
         <button className="btn" onClick={onApply}>
           Apply Now
         </button>

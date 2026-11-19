@@ -45,10 +45,10 @@ function App() {
   return (
     <div id="top">
       <Header onApply={openApplication} />
+      <WorkSection onApply={openApplication} />
       <StatementSection />
       <UrgencySection />
       <ProcessSection />
-      <WorkSection onApply={openApplication} />
       <AudienceSection />
       <FounderSection onApply={openApplication} />
       <BenefitsSection />
