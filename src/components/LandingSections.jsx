@@ -203,7 +203,8 @@ export function WorkSection({ onApply }) {
       <div className="wrap">
         <div className="eyebrow">Client milestone videos</div>
         <h2>
-          The growth they achieved <span className="highlight">with Socialdaa.</span>
+          The growth they achieved{" "}
+          <span className="highlight">with Socialdaa.</span>
         </h2>
         <div className="reels">
           {videos.map((video, index) => (
