@@ -21,6 +21,8 @@ export default function ApplicationOverlay({ open, onClose }) {
     const email = String(data.get("email") || "").trim();
     const revenue = String(data.get("revenue") || "");
     const budget = String(data.get("budget") || "");
+    const expectations = String(data.get("expectations") || "");
+    const profession = String(data.get("profession") || "").trim();
 
     if (!name) return setError("Please enter your name.");
     if (phone.length < 10)
@@ -31,6 +33,10 @@ export default function ApplicationOverlay({ open, onClose }) {
       return setError("Please select your monthly revenue range.");
     if (!budget)
       return setError("Please answer the package investment question.");
+    if (!expectations)
+      return setError("Please select your primary expectation from our services.");
+    if (!profession)
+      return setError("Please tell us what profession or business you are in.");
 
     setError("");
     setSubmitted(true);
@@ -86,29 +92,31 @@ export default function ApplicationOverlay({ open, onClose }) {
             <input name="email" type="email" autoComplete="email" />
             <label>I am a…</label>
             <select name="role">
-              <option>Founder / Entrepreneur</option>
+              <option>Founder</option>
               <option>MD / CEO</option>
-              <option>CXO / Senior Executive</option>
+              <option>CXO</option>
               <option>Coach / Consultant</option>
-              <option>Professional / Domain Expert</option>
+              <option>Professional / Expert</option>
               <option>Creator</option>
-              <option>Fashion &amp; Lifestyle</option>
+              <option>Fashion / Lifestyle</option>
             </select>
-            <label>Why do you want a personal brand?</label>
-            <select name="goal">
-              <option>Grow clients / business</option>
-              <option>Build industry authority</option>
-              <option>Grow audience &amp; visibility</option>
-              <option>Unlock career opportunities</option>
-              <option>Attract brand deals</option>
-              <option>Attract investors</option>
-              <option>Speaking / media opportunities</option>
+            <label>What profession or business are you in?</label>
+            <input name="profession" placeholder="Example: Dermatologist, Interior Designer, Startup" />
+            <label>What are your primary expectations from our services?</label>
+            <select name="expectations">
+              <option value="">Select your primary expectation</option>
+              <option>Visibility</option>
+              <option>Authority</option>
+              <option>Sales Growth</option>
+              <option>All of the above</option>
             </select>
             <label>Instagram / LinkedIn (optional)</label>
             <input name="social" placeholder="@handle or profile link" />
             <label>
               Monthly revenue{" "}
-              <span className="optional">(select if applying with a company)</span>
+              <span className="optional">
+                (select if applying with a company)
+              </span>
             </label>
             <select name="revenue">
               <option value="">Select a range</option>

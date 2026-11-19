@@ -51,7 +51,7 @@ export function UrgencySection() {
           <p>
             In every industry, people choose the expert they already know and
             trust. The right content turns your experience into authority,
-            visibility and demand—before the first sales conversation.
+            visibility and demand - before the first sales conversation.
           </p>
         </div>
         <div className="agency-proof-strip">
@@ -112,7 +112,7 @@ export function ProcessSection() {
               <div className="portrait portrait-founder">[Founder photo]</div>
             </div>
             <p>
-              Like How Thalaivar says “Enga Valzhi thami vazhi” — we do it in
+              Like How Thalaivar says “Enga Valzhi thami vazhi” - we do it in
               our own unique way. Create end-to-end content for your Instagram.
               We create reels, carousels, memes and daily stories for your page,
               grow your Instagram organically and build a community of followers
@@ -149,7 +149,7 @@ export function AudienceSection() {
             <h2>Who Socialdaa is for</h2>
           </div>
           <p>
-            For people who already have valuable expertise—and want it to reach
+            For people who already have valuable expertise - and want it to reach
             the market clearly and consistently.
           </p>
         </div>
@@ -363,7 +363,7 @@ export function TestimonialsSection() {
     },
     {
       quote:
-        "Hitting 100K followers in just 2 months has been an incredible journey! We didn't miss the mark this time—we nailed it.",
+        "Hitting 100K followers in just 2 months has been an incredible journey! We didn't miss the mark this time - we nailed it.",
       name: "Dr. Hanan",
       role: "Dermatologist · 100K in 2 months",
     },
@@ -375,7 +375,7 @@ export function TestimonialsSection() {
     },
     {
       quote:
-        "Partnering with Socialdaa completely changed the game—taking us to 100K followers in a record-breaking 13 videos and now past 200K.",
+        "Partnering with Socialdaa completely changed the game - taking us to 100K followers in a record-breaking 13 videos and now past 200K.",
       name: "Dr. Sakthivel Sivasubramanian",
       role: "Chief Endocrinologist · 100K in 13 videos",
     },
