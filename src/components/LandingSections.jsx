@@ -156,10 +156,48 @@ export function AudienceSection() {
 
 export function WorkSection({ onApply }) {
   const videos = [
-    { name: "Client Name", role: "Founder" },
-    { name: "Client Name", role: "Coach" },
-    { name: "Client Name", role: "CEO" },
+    {
+      name: "Swathi",
+      role: "Architect & Luxury Interior Designer",
+      src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/Swatrhi%20mam%20100k%20remastered.mp4",
+    },
+    {
+      name: "Dr. Abinaya Vijayan",
+      role: "100K followers in 29 reels",
+      src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/100k%20Followers%20in%2029%20Reels!%20__%20Real%20OG%20@dr.abinaya_vijayan%20%E2%9D%A4%EF%B8%8F%E2%AD%90%EF%B8%8F%20Sometimes%20the%20universe%20gives%20y.mp4",
+    },
+    {
+      name: "Dr. Hanan",
+      role: "100K followers in 2 months",
+      src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/Here%20we%20go%20100k%20in%20just%202%20Months%20%E2%9C%A8%E2%9D%A4%EF%B8%8FNext%20Stop%20500k%20_The%20Hardwork%20,%20The%20Late%20Night%20Shoots%20,%20Mana.mp4",
+    },
   ];
+
+  const [playingIndex, setPlayingIndex] = useState(-1);
+
+  const togglePlayback = (event, index) => {
+    event.stopPropagation();
+    const reel = event.currentTarget.closest(".reel");
+    const video = reel?.querySelector("video");
+    if (!video) return;
+
+    document.querySelectorAll(".reel video").forEach((otherVideo) => {
+      if (otherVideo !== video) otherVideo.pause();
+    });
+
+    if (video.paused) {
+      video.muted = false;
+      video.controls = true;
+      video
+        .play()
+        .then(() => setPlayingIndex(index))
+        .catch(() => {});
+    } else {
+      video.pause();
+      setPlayingIndex(-1);
+    }
+  };
+
   return (
     <section className="center-section work-section" id="work">
       <div className="wrap">
@@ -170,30 +208,53 @@ export function WorkSection({ onApply }) {
         </h2>
         <div className="reels">
           {videos.map((video, index) => (
-            <button
+            <div
               className="reel"
-              key={index}
-              onClick={onApply}
-              aria-label={`View ${video.name} reel`}
+              key={video.src}
+              role="button"
+              tabIndex={0}
+              onClick={(event) => {
+                if (event.target.tagName === "VIDEO") return;
+                togglePlayback(event, index);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  togglePlayback(event, index);
+                }
+              }}
             >
-              <div className="reel-placeholder">
-                Your video
-                <br />
-                here
-              </div>
+              <video
+                src={video.src}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={`${video.name} testimonial video`}
+                onPlay={() => setPlayingIndex(index)}
+                onPause={() =>
+                  setPlayingIndex((current) =>
+                    current === index ? -1 : current,
+                  )
+                }
+              />
               <span className="recording">
                 <b />
                 REC
               </span>
-              <span className="timecode">00:00:00</span>
+              <span
+                className={`reel-play ${playingIndex === index ? "hidden" : ""}`}
+              >
+                ▶
+              </span>
               <span className="reel-caption">
                 <strong>{video.name}</strong>
                 <small>{video.role}</small>
               </span>
-            </button>
+            </div>
           ))}
         </div>
-        <p className="tap">Tap a video to watch with sound</p>
+        <p className="tap">Tap a reel to watch with sound</p>
         <button className="btn" onClick={onApply}>
           Apply Now
         </button>
@@ -276,48 +337,71 @@ export function BenefitsSection() {
 
 export function TestimonialsSection() {
   const testimonials = [
-    [
-      "“[Short client quote — one or two lines on what changed after working with Socialdaa.]”",
-      "[Client Name]",
-      "[Founder · City]",
-    ],
-    [
-      "“[Tanglish quote — e.g. Camera-la naturala pesa kathukitten, team romba professional.]”",
-      "[Client Name]",
-      "[Coach · City]",
-    ],
-    [
-      "“[Quote about the process — clear, fast, no hassle.]”",
-      "[Client Name]",
-      "[CEO · City]",
-    ],
+    {
+      quote:
+        "Reaching 100K followers in just 29 reels felt surreal! Having a single reel cross 15.7 million views and bring in 35K followers in just two days completely transformed my page.",
+      name: "Dr. Abinaya Vijayan",
+      role: "Fertility Specialist · 100K in 29 reels",
+    },
+    {
+      quote:
+        "Crossing 100K followers wouldn't have been possible without Socialdaa and my husband Saravanan. From scripting and videography to editing, everyone played a crucial role.",
+      name: "Swathi",
+      role: "Architect & Luxury Interior Designer · 100K",
+    },
+    {
+      quote:
+        "Hitting 100K followers in just 2 months has been an incredible journey! We didn't miss the mark this time—we nailed it.",
+      name: "Dr. Hanan",
+      role: "Dermatologist · 100K in 2 months",
+    },
+    {
+      quote:
+        "Crossing the 100K family milestone has been amazing! Even through the behind-the-scenes retakes and laughs during shoots, the team made the entire process seamless and fun.",
+      name: "Dr. Surya",
+      role: "Dermatologist · 52K to 114K",
+    },
+    {
+      quote:
+        "Partnering with Socialdaa completely changed the game—taking us to 100K followers in a record-breaking 13 videos and now past 200K.",
+      name: "Dr. Sakthivel Sivasubramanian",
+      role: "Chief Endocrinologist · 100K in 13 videos",
+    },
+    {
+      quote:
+        "Crossing 100K on my personal page is a huge step toward hitting 1 million. Team Socialdaa has been my biggest backbone and support.",
+      name: "Arun Annadurai",
+      role: "Creator & Entrepreneur · 42K to 100K+",
+    },
   ];
+
   const [index, setIndex] = useState(0);
   const move = (step) =>
     setIndex(
       (current) => (current + step + testimonials.length) % testimonials.length,
     );
+
   return (
     <section className="center-section testimonial-section">
       <div className="wrap">
         <div className="eyebrow">Client voices</div>
         {testimonials.map(
-          (item, i) =>
+          (testimonial, i) =>
             i === index && (
-              <div className="testimonial-slide" key={item[0]}>
-                <blockquote>{item[0]}</blockquote>
+              <div className="testimonial-slide" key={testimonial.name}>
+                <blockquote>“{testimonial.quote}”</blockquote>
                 <div className="testimonial-person">
                   <span className="avatar" />
                   <div>
-                    {item[1]}
-                    <small>{item[2]}</small>
+                    {testimonial.name}
+                    <small>{testimonial.role}</small>
                   </div>
                 </div>
               </div>
             ),
         )}
         <div className="carousel-controls">
-          <button onClick={() => move(-1)} aria-label="Previous">
+          <button onClick={() => move(-1)} aria-label="Previous testimonial">
             ←
           </button>
           <div className="dots">
@@ -329,7 +413,7 @@ export function TestimonialsSection() {
               />
             ))}
           </div>
-          <button onClick={() => move(1)} aria-label="Next">
+          <button onClick={() => move(1)} aria-label="Next testimonial">
             →
           </button>
         </div>
