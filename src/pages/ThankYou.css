@@ -1,0 +1,274 @@
+.thank-you-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #050506;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.thank-you-page::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 65%;
+  height: 70%;
+  background: radial-gradient(
+    circle,
+    rgba(113, 70, 170, 0.17),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.thank-you-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 580px;
+  margin: auto;
+  padding: 45px;
+  background: rgba(15, 14, 19, 0.75);
+  border: 1px solid #302b35;
+  border-radius: 16px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* SUCCESS ICON */
+
+.thank-you-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1px solid #d6ad3d;
+  background: rgba(214, 173, 61, 0.1);
+  color: #e4bd50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+  margin: 0 auto 25px;
+}
+
+/* HEADER */
+
+.thank-you-eyebrow {
+  display: block;
+  color: #d9b345;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.thank-you-card h1 {
+  font-size: clamp(36px, 6vw, 52px);
+  font-weight: 850;
+  line-height: 1.12;
+  letter-spacing: -2px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.thank-you-card h1 span {
+  color: #d8b044;
+}
+
+.thank-you-description {
+  color: #b9b5c1;
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 430px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* DIVIDER */
+
+.thank-you-divider {
+  width: 100%;
+  height: 1px;
+  background: #302c34;
+  margin: 32px auto;
+}
+
+/* NEXT STEPS */
+
+.thank-you-card h3 {
+  font-size: 21px;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.thank-you-card
+  > p:not(.thank-you-description):not(.thank-you-footer):not(
+    .thank-you-person
+  ) {
+  color: #aaa6b2;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: center;
+  margin: 0 auto 20px;
+}
+
+.thank-you-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+  padding: 17px 10px;
+  border-bottom: 1px solid #302c34;
+}
+
+.thank-you-info div {
+  flex: 0 0 40px;
+  height: 40px;
+  background: rgba(214, 173, 61, 0.1);
+  color: #d9b345;
+  border: 1px solid rgba(214, 173, 61, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.thank-you-info p {
+  color: #b9b5c1;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* USER NAME */
+
+.thank-you-person {
+  color: #aaa6b2;
+  font-size: 14px;
+  margin-top: 22px;
+}
+
+.thank-you-person strong {
+  color: #d8b044;
+}
+
+/* BUTTON */
+
+.thank-you-button {
+  width: 100%;
+  min-height: 58px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(110deg, #f0dc91, #c99e35);
+  color: #080808;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 9px;
+  margin: 30px auto 0;
+  transition: 0.3s ease;
+}
+
+.thank-you-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(214, 173, 61, 0.2);
+}
+
+/* FOOTER */
+
+.thank-you-footer {
+  color: #85818e;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* TABLET */
+
+@media (max-width: 768px) {
+  .thank-you-page {
+    padding: 35px 20px;
+  }
+
+  .thank-you-card {
+    max-width: 520px;
+    padding: 35px 28px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .thank-you-page {
+    padding: 25px 16px;
+    align-items: center;
+  }
+
+  .thank-you-card {
+    width: 100%;
+    padding: 30px 20px;
+    border-radius: 14px;
+  }
+
+  .thank-you-icon {
+    width: 62px;
+    height: 62px;
+    font-size: 30px;
+    margin-bottom: 22px;
+  }
+
+  .thank-you-eyebrow {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .thank-you-card h1 {
+    font-size: 37px;
+    letter-spacing: -1.5px;
+  }
+
+  .thank-you-description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .thank-you-divider {
+    margin: 25px auto;
+  }
+
+  .thank-you-card h3 {
+    font-size: 19px;
+  }
+
+  .thank-you-info {
+    gap: 13px;
+    padding: 15px 4px;
+  }
+
+  .thank-you-info p {
+    font-size: 13px;
+  }
+
+  .thank-you-button {
+    min-height: 55px;
+    font-size: 14px;
+  }
+
+  .thank-you-footer {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+}

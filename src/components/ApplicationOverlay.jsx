@@ -1,148 +1,191 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ApplicationOverlay({ open, onClose }) {
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
+
   const [step, setStep] = useState(1);
-  const [leadData, setLeadData] = useState(null);
   const [error, setError] = useState("");
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
 
-  const testimonials = [
-    {
-      quote:
-        "Reaching 100K followers in just 29 reels felt surreal. One reel crossed 15.7 million views and brought in 35K followers in two days.",
-      name: "Dr. Abinaya Vijayan",
-      role: "Fertility Specialist",
-    },
-    {
-      quote:
-        "Crossing 100K wouldn't have been possible without Socialdaa. From scripting and videography to editing, everyone played a crucial role.",
-      name: "Swathi",
-      role: "Architect & Luxury Interior Designer",
-    },
-    {
-      quote:
-        "Hitting 100K followers in just 2 months has been an incredible journey. We didn't miss the mark - we nailed it.",
-      name: "Dr. Hanan",
-      role: "Dermatologist",
-    },
-    {
-      quote:
-        "Crossing 100K has been amazing. The team made every shoot seamless, fun and completely worthwhile.",
-      name: "Dr. Surya",
-      role: "Dermatologist",
-    },
-    {
-      quote:
-        "Partnering with Socialdaa took us to 100K in a record-breaking 13 videos and now past 200K.",
-      name: "Dr. Sakthivel Sivasubramanian",
-      role: "Chief Endocrinologist",
-    },
-    {
-      quote:
-        "Crossing 100K on my personal page is a huge step toward 1 million. Team Socialdaa has been my biggest support.",
-      name: "Arun Annadurai",
-      role: "Creator & Entrepreneur",
-    },
-  ];
+  const [leadData, setLeadData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
 
+  const [brandData, setBrandData] = useState({
+    brand: "Personal brand",
+    role: "Founder",
+    profession: "",
+    social: "",
+  });
+
+  const [applicationData, setApplicationData] = useState({
+    expectations: "",
+    revenue: "",
+    budget: "",
+  });
+
+  // Lock background scrolling
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
 
+  // Reset when opening a fresh application
   useEffect(() => {
     if (open) {
-      setSubmitted(false);
       setStep(1);
       setError("");
-      setLeadData(null);
+
+      setLeadData({
+        name: "",
+        phone: "",
+        email: "",
+      });
+
+      setBrandData({
+        brand: "Personal brand",
+        role: "Founder",
+        profession: "",
+        social: "",
+      });
+
+      setApplicationData({
+        expectations: "",
+        revenue: "",
+        budget: "",
+      });
     }
   }, [open]);
 
-  useEffect(() => {
-    if (!open) return undefined;
-    const timer = window.setInterval(() => {
-      setTestimonialIndex((current) => (current + 1) % testimonials.length);
-    }, 5000);
-    return () => window.clearInterval(timer);
-  }, [open, testimonials.length]);
-
   if (!open) return null;
 
+  // STEP 1: CONTACT DETAILS
   function nextStep(event) {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
+
     const name = String(data.get("name") || "").trim();
     const phone = String(data.get("phone") || "").replace(/\D/g, "");
     const email = String(data.get("email") || "").trim();
 
-    if (!name) return setError("Please enter your name.");
-    if (phone.length < 10)
+    if (!name) {
+      return setError("Please enter your name.");
+    }
+
+    if (phone.length !== 10) {
       return setError("Please enter a valid 10-digit WhatsApp number.");
-    if (!/^\S+@\S+\.\S+$/.test(email))
+    }
+
+    // Correct email validation
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
       return setError("Please enter a valid email.");
+    }
+
+    setLeadData({
+      name,
+      phone,
+      email,
+    });
 
     setError("");
-    setLeadData({ name, phone, email });
     setStep(2);
   }
 
+  // STEP 2: BRAND DETAILS
   function nextBrandStep(event) {
-    event.preventEvent?.();
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
+
     const profession = String(data.get("profession") || "").trim();
 
-    if (!profession)
+    if (!profession) {
       return setError("Please tell us what profession or business you are in.");
+    }
+
+    setBrandData({
+      brand: data.get("brand") || "Personal brand",
+      role: data.get("role") || "Founder",
+      profession,
+      social: String(data.get("social") || "").trim(),
+    });
 
     setError("");
     setStep(3);
   }
 
+  // STEP 3: FINAL SUBMISSION
   function submit(event) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const revenue = String(data.get("revenue") || "");
-    const budget = String(data.get("budget") || "");
-    const expectations = String(data.get("expectations") || "");
-    const profession = String(data.get("profession") || "").trim();
 
-    if (!profession)
+    const data = new FormData(event.currentTarget);
+
+    const expectations = String(data.get("expectations") || "");
+
+    const revenue = String(data.get("revenue") || "");
+
+    const budget = String(data.get("budget") || "");
+
+    if (!brandData.profession.trim()) {
+      setStep(2);
       return setError("Please tell us what profession or business you are in.");
-    if (!expectations)
+    }
+
+    if (!expectations) {
       return setError(
         "Please select your primary expectation from our services.",
       );
-    if (data.get("brand") === "Company brand" && !revenue)
+    }
+
+    if (brandData.brand === "Company brand" && !revenue) {
       return setError("Please select your monthly revenue range.");
-    if (!budget)
+    }
+
+    if (!budget) {
       return setError("Please answer the package investment question.");
+    }
+
+    // Combine all form data
+    const finalApplicationData = {
+      ...leadData,
+      ...brandData,
+      expectations,
+      revenue,
+      budget,
+    };
 
     setError("");
 
+    // Google Analytics tracking
     if (typeof window.gtag === "function") {
       window.gtag("event", "generate_lead", {
         event_category: "Application",
-        event_label: String(data.get("brand") || "Personal brand"),
+        event_label: brandData.brand,
         value: 1,
       });
     }
 
+    // Meta Pixel tracking
     if (typeof window.fbq === "function") {
       window.fbq("track", "Lead");
     }
 
-    setSubmitted(true);
-  }
+    console.log("Final Application Data:", finalApplicationData);
 
-  function handleFinalSubmit() {
-    // Handle the final submission to the server or any other logic here
-    console.log("Final submission data:", leadData);
-    setSubmitted(true);
+    // Redirect to separate Thank You page
+    navigate("/thank-you", {
+      state: {
+        application: finalApplicationData,
+      },
+    });
+
+    onClose();
   }
 
   return (
@@ -152,10 +195,13 @@ export default function ApplicationOverlay({ open, onClose }) {
       aria-modal="true"
       aria-labelledby="application-title"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (event.target === event.currentTarget) {
+          onClose();
+        }
       }}
     >
       <div className="application-modal">
+        {/* CLOSE BUTTON */}
         <button
           className="application-close"
           type="button"
@@ -165,207 +211,244 @@ export default function ApplicationOverlay({ open, onClose }) {
           ×
         </button>
 
-        {!submitted ? (
-          <>
-            <div className="application-modal-header">
-              <span className="application-kicker">Socialdaa application</span>
-              <h2 id="application-title">
-                {step === 1
-                  ? "Reserve My Free Session"
-                  : "Tell us about your brand"}
-              </h2>
-              <p>
-                {step === 1
-                  ? "Fill out the short form. Join your one-on-one session."
-                  : "A few details to understand your brand and goals."}
-              </p>
-              <div className="application-progress">
-                {[1, 2, 3].map((number) => (
-                  <span
-                    className={step === number ? "active" : ""}
-                    key={number}
-                  >
-                    {number}
-                  </span>
-                ))}
-              </div>
+        {/* HEADER */}
+        <div className="application-modal-header">
+          <span className="application-kicker">Socialdaa application</span>
+
+          <h2 id="application-title">
+            {step === 1
+              ? "Reserve My Free Session"
+              : "Tell us about your brand"}
+          </h2>
+
+          <p>
+            {step === 1
+              ? "Fill out the short form. Join your one-on-one session."
+              : "A few details to understand your brand and goals."}
+          </p>
+
+          {/* PROGRESS INDICATOR */}
+          <div className="application-progress">
+            {[1, 2, 3].map((number) => (
+              <span className={step === number ? "active" : ""} key={number}>
+                {number}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* STEP 1 */}
+        {step === 1 && (
+          <form className="application-form" onSubmit={nextStep} noValidate>
+            <label>Full name</label>
+
+            <input
+              name="name"
+              autoComplete="name"
+              placeholder="Dr. Your name"
+              defaultValue={leadData.name}
+            />
+
+            <label>WhatsApp number</label>
+
+            <div className="application-phone-field">
+              <span>+91</span>
+
+              <input
+                name="phone"
+                type="tel"
+                inputMode="numeric"
+                autoComplete="tel"
+                placeholder="98765 43210"
+                defaultValue={leadData.phone}
+              />
             </div>
 
-            {step === 1 ? (
-              <form className="application-form" onSubmit={nextStep} noValidate>
-                <label>Full name</label>
-                <input
-                  name="name"
-                  autoComplete="name"
-                  placeholder="Dr. Your name"
-                  defaultValue={leadData?.name || ""}
-                />
+            <label>Email</label>
 
-                <label>WhatsApp number</label>
-                <div className="application-phone-field">
-                  <span>+91</span>
-                  <input
-                    name="phone"
-                    type="tel"
-                    inputMode="tel"
-                    autoComplete="tel"
-                    placeholder="98765 43210"
-                    defaultValue={leadData?.phone || ""}
-                  />
-                </div>
+            <input
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="you@clinic.com"
+              defaultValue={leadData.email}
+            />
 
-                <label>Email</label>
-                <input
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="you@clinic.com"
-                  defaultValue={leadData?.email || ""}
-                />
+            <div className="form-error">{error}</div>
 
-                <div className="form-error">{error}</div>
-                <button
-                  className="btn form-submit application-primary-action"
-                  type="submit"
-                >
-                  Continue <span>→</span>
-                </button>
-                <p className="application-assurance">
-                  No fee. No hidden charges.
-                </p>
-              </form>
-            ) : step === 2 ? (
-              <form
-                className="application-form application-form-step-two"
-                onSubmit={nextBrandStep}
-                noValidate
-              >
-                <label>What brand do you want to build?</label>
-                <select name="brand">
-                  <option>Personal brand</option>
-                  <option>Company brand</option>
-                </select>
-
-                <label>I am a…</label>
-                <select name="role">
-                  <option>Founder</option>
-                  <option>MD / CEO</option>
-                  <option>CXO</option>
-                  <option>Coach / Consultant</option>
-                  <option>Professional / Expert</option>
-                  <option>Creator</option>
-                  <option>Fashion / Lifestyle</option>
-                </select>
-
-                <label>What profession or business are you in?</label>
-                <input
-                  name="profession"
-                  placeholder="Example: Dermatologist, Interior Designer, Startup"
-                />
-
-                <label>Instagram / LinkedIn (optional)</label>
-                <input name="social" placeholder="@handle or profile link" />
-
-                <div className="form-error">{error}</div>
-                <button
-                  className="application-back-step"
-                  type="button"
-                  onClick={() => {
-                    setError("");
-                    setStep(1);
-                  }}
-                >
-                  ← Edit your details
-                </button>
-                <button
-                  className="btn form-submit application-primary-action"
-                  type="submit"
-                >
-                  Continue <span>→</span>
-                </button>
-              </form>
-            ) : (
-              <form
-                className="application-form application-form-step-two"
-                onSubmit={submit}
-                noValidate
-              >
-                <label>
-                  What are your primary expectations from our services?
-                </label>
-                <select name="expectations">
-                  <option value="">Select your primary expectation</option>
-                  <option>Visibility</option>
-                  <option>Authority</option>
-                  <option>Sales Growth</option>
-                  <option>All of the above</option>
-                </select>
-
-                <label>
-                  Monthly revenue{" "}
-                  <span className="optional">
-                    (select if applying with a company)
-                  </span>
-                </label>
-                <select name="revenue">
-                  <option value="">Select a range</option>
-                  <option>₹1 lakh – ₹5 lakhs</option>
-                  <option>₹5 lakhs – ₹10 lakhs</option>
-                  <option>₹10 lakhs – ₹15 lakhs</option>
-                  <option>₹15 lakhs – ₹20 lakhs</option>
-                  <option>₹20 lakhs – ₹25 lakhs</option>
-                  <option>₹25 lakhs+</option>
-                </select>
-
-                <label>
-                  Are you comfortable investing ₹1 lakh + GST in personal
-                  branding?
-                </label>
-                <select name="budget">
-                  <option value="">Select an option</option>
-                  <option>Yes, ₹1 lakh + GST is within my budget</option>
-                  <option>I am open to discussing the right package</option>
-                  <option>Not at this stage</option>
-                </select>
-
-                <div className="form-error">{error}</div>
-                <button
-                  className="application-back-step"
-                  type="button"
-                  onClick={() => {
-                    setError("");
-                    setStep(2);
-                  }}
-                >
-                  ← Edit brand details
-                </button>
-                <button
-                  className="btn form-submit application-primary-action"
-                  type="submit"
-                >
-                  Submit Application <span>→</span>
-                </button>
-              </form>
-            )}
-          </>
-        ) : (
-          <div className="application-success">
-            <span className="application-success-icon">✓</span>
-            <div className="eyebrow">Application received</div>
-            <h2>
-              Thank <span className="highlight">you.</span>
-            </h2>
-            <p>
-              We’ve received your application. Our team will review it and reach
-              out on WhatsApp.
-            </p>
             <button
-              className="btn application-primary-action"
-              onClick={onClose}
+              className="btn form-submit application-primary-action"
+              type="submit"
             >
-              Back to Socialdaa
+              Continue <span>→</span>
             </button>
-          </div>
+
+            <p className="application-assurance">No fee. No hidden charges.</p>
+          </form>
+        )}
+
+        {/* STEP 2 */}
+        {step === 2 && (
+          <form
+            className="application-form application-form-step-two"
+            onSubmit={nextBrandStep}
+            noValidate
+          >
+            <label>What brand do you want to build?</label>
+
+            <select name="brand" defaultValue={brandData.brand}>
+              <option value="Personal brand">Personal brand</option>
+
+              <option value="Company brand">Company brand</option>
+            </select>
+
+            <label>I am a…</label>
+
+            <select name="role" defaultValue={brandData.role}>
+              <option>Founder</option>
+              <option>MD / CEO</option>
+              <option>CXO</option>
+              <option>Coach / Consultant</option>
+              <option>Professional / Expert</option>
+              <option>Creator</option>
+              <option>Fashion / Lifestyle</option>
+            </select>
+
+            <label>What profession or business are you in?</label>
+
+            <input
+              name="profession"
+              placeholder="Example: Dermatologist, Interior Designer, Startup"
+              defaultValue={brandData.profession}
+            />
+
+            <label>Instagram / LinkedIn (optional)</label>
+
+            <input
+              name="social"
+              placeholder="@handle or profile link"
+              defaultValue={brandData.social}
+            />
+
+            <div className="form-error">{error}</div>
+
+            <button
+              className="application-back-step"
+              type="button"
+              onClick={() => {
+                setError("");
+                setStep(1);
+              }}
+            >
+              ← Edit your details
+            </button>
+
+            <button
+              className="btn form-submit application-primary-action"
+              type="submit"
+            >
+              Continue <span>→</span>
+            </button>
+          </form>
+        )}
+
+        {/* STEP 3 */}
+        {step === 3 && (
+          <form
+            className="application-form application-form-step-two"
+            onSubmit={submit}
+            noValidate
+          >
+            <label>What are your primary expectations from our services?</label>
+
+            <select
+              name="expectations"
+              value={applicationData.expectations}
+              onChange={(event) =>
+                setApplicationData((prev) => ({
+                  ...prev,
+                  expectations: event.target.value,
+                }))
+              }
+            >
+              <option value="">Select your primary expectation</option>
+
+              <option value="Visibility">Visibility</option>
+              <option value="Authority">Authority</option>
+              <option value="Sales Growth">Sales Growth</option>
+              <option value="All of the above">All of the above</option>
+            </select>
+
+            <label>
+              Monthly revenue{" "}
+              <span className="optional">
+                (select if applying with a company)
+              </span>
+            </label>
+
+            <select
+              name="revenue"
+              value={applicationData.revenue}
+              onChange={(event) =>
+                setApplicationData((prev) => ({
+                  ...prev,
+                  revenue: event.target.value,
+                }))
+              }
+            >
+              <option value="">Select a range</option>
+
+              <option>₹1 lakh – ₹5 lakhs</option>
+              <option>₹5 lakhs – ₹10 lakhs</option>
+              <option>₹10 lakhs – ₹15 lakhs</option>
+              <option>₹15 lakhs – ₹20 lakhs</option>
+              <option>₹20 lakhs – ₹25 lakhs</option>
+              <option>₹25 lakhs+</option>
+            </select>
+
+            <label>
+              Are you comfortable investing ₹1 lakh + GST in personal branding?
+            </label>
+
+            <select
+              name="budget"
+              value={applicationData.budget}
+              onChange={(event) =>
+                setApplicationData((prev) => ({
+                  ...prev,
+                  budget: event.target.value,
+                }))
+              }
+            >
+              <option value="">Select an option</option>
+
+              <option>Yes, ₹1 lakh + GST is within my budget</option>
+
+              <option>I am open to discussing the right package</option>
+
+              <option>Not at this stage</option>
+            </select>
+
+            <div className="form-error">{error}</div>
+
+            <button
+              className="application-back-step"
+              type="button"
+              onClick={() => {
+                setError("");
+                setStep(2);
+              }}
+            >
+              ← Edit brand details
+            </button>
+
+            <button
+              className="btn form-submit application-primary-action"
+              type="submit"
+            >
+              Submit Application <span>→</span>
+            </button>
+          </form>
         )}
       </div>
     </div>

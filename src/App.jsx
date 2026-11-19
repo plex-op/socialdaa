@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import { Header } from "./components/Header.jsx";
 import ApplicationOverlay from "./components/ApplicationOverlay.jsx";
 import FloatingCta from "./components/FloatingCta.jsx";
+
 import {
   // StatementSection,
   UrgencySection,
@@ -15,9 +18,12 @@ import {
   FinalCta,
   Footer,
 } from "./components/LandingSections.jsx";
+
+import ThankYou from "./pages/ThankYou.jsx";
+
 import "./socialdaa.css";
 
-function App() {
+function Home() {
   const [applicationOpen, setApplicationOpen] = useState(false);
   const [floatingVisible, setFloatingVisible] = useState(false);
 
@@ -49,7 +55,8 @@ function App() {
       <TestimonialsSection />
       {/* <ObjectionsSection /> */}
 
-      {/* <section className="center-section closing-statement">
+      {/* 
+      <section className="center-section closing-statement">
         <div className="wrap">
           <p className="scrub closing-copy">
             No more excuses. From first idea to final edit, we take care of
@@ -59,19 +66,31 @@ function App() {
             Apply Now
           </button>
         </div>
-      </section> */}
+      </section>
+      */}
 
       <FinalCta onApply={openApplication} />
       <Footer />
+
       <FloatingCta
         visible={floatingVisible && !applicationOpen}
         onApply={openApplication}
       />
+
       <ApplicationOverlay
         open={applicationOpen}
         onClose={() => setApplicationOpen(false)}
       />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/thank-you" element={<ThankYou />} />
+    </Routes>
   );
 }
 
