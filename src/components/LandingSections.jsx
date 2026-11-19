@@ -74,44 +74,56 @@ export function UrgencySection() {
 }
 
 export function ProcessSection() {
-  const steps = [
-    [
-      "01",
-      "Find your position",
-      "We uncover the expertise, story and audience angle that makes you ownable.",
-    ],
-    [
-      "02",
-      "Plan every idea",
-      "We turn your knowledge into a repeatable content strategy and scripts in your voice.",
-    ],
-    [
-      "03",
-      "Create with confidence",
-      "Our team handles the shoot, direction, edit, polish and delivery.",
-    ],
-    [
-      "04",
-      "Build lasting recall",
-      "Consistent, useful content keeps your name active in the minds that matter.",
-    ],
+  const metrics = [
+    ["2M+", "Followers"],
+    ["400M+", "Organic Views"],
+    ["12,000+", "Leads"],
+    ["2,500+", "Content Delivered"],
   ];
 
   return (
-    <section className="process-section">
+    <section className="how-section">
       <div className="wrap">
-        <div className="eyebrow">The complete Socialdaa system</div>
-        <h2>
-          From experience to <span className="highlight">influence.</span>
-        </h2>
-        <div className="process-grid">
-          {steps.map(([number, title, copy]) => (
-            <article className="process-card" key={number}>
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
+        <div className="how-grid">
+          <div className="how-title">
+            <div className="eyebrow">Our approach</div>
+            <h2>
+              How we
+              <br />
+              do it?
+            </h2>
+          </div>
+
+          <div className="how-metrics">
+            {metrics.map(([value, label]) => (
+              <div className="how-metric" key={label}>
+                <span className="metric-icon">✦</span>
+                <div>
+                  <strong>{value}</strong>
+                  <small>{label}</small>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="how-story">
+            <div className="how-portraits">
+              <div className="portrait portrait-team">[Team photo]</div>
+              <div className="portrait portrait-founder">[Founder photo]</div>
+            </div>
+            <p>
+              Like How Thalaivar says “Enga Valzhi thami vazhi” — we do it in
+              our own unique way. Create end-to-end content for your Instagram.
+              We create reels, carousels, memes and daily stories for your page,
+              grow your Instagram organically and build a community of followers
+              that converts into paid customers.
+            </p>
+          </div>
+
+          <blockquote className="how-quote">
+            Like How Thalaivar says “Enga Valzhi thami vazhi”
+            <span>we do it in our own unique way!</span>
+          </blockquote>
         </div>
       </div>
     </section>
@@ -263,54 +275,54 @@ export function WorkSection({ onApply }) {
   );
 }
 
-export function FounderSection({ onApply }) {
-  return (
-    <section>
-      <div className="wrap">
-        <div className="founder-grid">
-          <div className="founder-photo">[Founder photo]</div>
-          <div>
-            <div className="eyebrow">The people behind it</div>
-            <h2>
-              Led by <span className="highlight">[Founder Name].</span>
-            </h2>
-            <div className="founder-name">
-              [Founder Name]
-              <small>[Title · e.g. Founder, Socialdaa]</small>
-            </div>
-            <div className="stats">
-              <div>
-                <b>[Stat]</b>
-                <small>[Label]</small>
-              </div>
-              <div>
-                <b>[Stat]</b>
-                <small>[Label]</small>
-              </div>
-              <div>
-                <b>[Stat]</b>
-                <small>[Label]</small>
-              </div>
-            </div>
-            <p className="founder-copy">
-              [Two or three lines on the founder’s experience, credentials and
-              why Socialdaa exists. Use only verified facts.]
-            </p>
-            <button className="btn" onClick={onApply}>
-              Apply Now
-            </button>
-          </div>
-        </div>
-        <div className="logos">
-          <span>[Logo]</span>
-          <span>[Logo]</span>
-          <span>[Logo]</span>
-          <span>[Logo]</span>
-        </div>
-      </div>
-    </section>
-  );
-}
+// export function FounderSection({ onApply }) {
+//   return (
+//     <section>
+//       <div className="wrap">
+//         <div className="founder-grid">
+//           <div className="founder-photo">[Founder photo]</div>
+//           <div>
+//             <div className="eyebrow">The people behind it</div>
+//             <h2>
+//               Led by <span className="highlight">[Founder Name].</span>
+//             </h2>
+//             <div className="founder-name">
+//               [Founder Name]
+//               <small>[Title · e.g. Founder, Socialdaa]</small>
+//             </div>
+//             <div className="stats">
+//               <div>
+//                 <b>[Stat]</b>
+//                 <small>[Label]</small>
+//               </div>
+//               <div>
+//                 <b>[Stat]</b>
+//                 <small>[Label]</small>
+//               </div>
+//               <div>
+//                 <b>[Stat]</b>
+//                 <small>[Label]</small>
+//               </div>
+//             </div>
+//             <p className="founder-copy">
+//               [Two or three lines on the founder’s experience, credentials and
+//               why Socialdaa exists. Use only verified facts.]
+//             </p>
+//             <button className="btn" onClick={onApply}>
+//               Apply Now
+//             </button>
+//           </div>
+//         </div>
+//         <div className="logos">
+//           <span>[Logo]</span>
+//           <span>[Logo]</span>
+//           <span>[Logo]</span>
+//           <span>[Logo]</span>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 export function BenefitsSection() {
   const items = [

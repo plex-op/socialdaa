@@ -3,15 +3,15 @@ import { Header } from "./components/Header.jsx";
 import ApplicationOverlay from "./components/ApplicationOverlay.jsx";
 import FloatingCta from "./components/FloatingCta.jsx";
 import {
-  StatementSection,
+  // StatementSection,
   UrgencySection,
   ProcessSection,
   AudienceSection,
   WorkSection,
-  FounderSection,
-  BenefitsSection,
+  // FounderSection,
+  // BenefitsSection,
   TestimonialsSection,
-  ObjectionsSection,
+  // ObjectionsSection,
   FinalCta,
   Footer,
 } from "./components/LandingSections.jsx";
@@ -46,16 +46,16 @@ function App() {
     <div id="top">
       <Header onApply={openApplication} />
       <WorkSection onApply={openApplication} />
-      <StatementSection />
+      <AudienceSection />
+      {/* <StatementSection /> */}
       <UrgencySection />
       <ProcessSection />
-      <AudienceSection />
-      <FounderSection onApply={openApplication} />
-      <BenefitsSection />
-      <TestimonialsSection />
-      <ObjectionsSection />
 
-      <section className="center-section closing-statement">
+      {/* <BenefitsSection /> */}
+      <TestimonialsSection />
+      {/* <ObjectionsSection /> */}
+
+      {/* <section className="center-section closing-statement">
         <div className="wrap">
           <p className="scrub closing-copy">
             No more excuses. From first idea to final edit, we take care of
@@ -65,7 +65,7 @@ function App() {
             Apply Now
           </button>
         </div>
-      </section>
+      </section> */}
 
       <FinalCta onApply={openApplication} />
       <Footer />
