@@ -101,7 +101,9 @@ export default function ApplicationOverlay({ open, onClose }) {
     if (!profession)
       return setError("Please tell us what profession or business you are in.");
     if (!expectations)
-      return setError("Please select your primary expectation from our services.");
+      return setError(
+        "Please select your primary expectation from our services.",
+      );
     if (data.get("brand") === "Company brand" && !revenue)
       return setError("Please select your monthly revenue range.");
     if (!budget)
@@ -155,7 +157,9 @@ export default function ApplicationOverlay({ open, onClose }) {
             <div className="application-modal-header">
               <span className="application-kicker">Socialdaa application</span>
               <h2 id="application-title">
-                {step === 1 ? "Reserve My Free Session" : "Tell us about your brand"}
+                {step === 1
+                  ? "Reserve My Free Session"
+                  : "Tell us about your brand"}
               </h2>
               <p>
                 {step === 1
@@ -172,7 +176,12 @@ export default function ApplicationOverlay({ open, onClose }) {
             {step === 1 ? (
               <form className="application-form" onSubmit={nextStep} noValidate>
                 <label>Full name</label>
-                <input name="name" autoComplete="name" placeholder="Dr. Your name" defaultValue={leadData?.name || ""} />
+                <input
+                  name="name"
+                  autoComplete="name"
+                  placeholder="Dr. Your name"
+                  defaultValue={leadData?.name || ""}
+                />
 
                 <label>WhatsApp number</label>
                 <div className="application-phone-field">
@@ -188,16 +197,31 @@ export default function ApplicationOverlay({ open, onClose }) {
                 </div>
 
                 <label>Email</label>
-                <input name="email" type="email" autoComplete="email" placeholder="you@clinic.com" defaultValue={leadData?.email || ""} />
+                <input
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="you@clinic.com"
+                  defaultValue={leadData?.email || ""}
+                />
 
                 <div className="form-error">{error}</div>
-                <button className="btn form-submit application-primary-action" type="submit">
+                <button
+                  className="btn form-submit application-primary-action"
+                  type="submit"
+                >
                   Continue <span>→</span>
                 </button>
-                <p className="application-assurance">No fee. No hidden charges.</p>
+                <p className="application-assurance">
+                  No fee. No hidden charges.
+                </p>
               </form>
             ) : (
-              <form className="application-form application-form-step-two" onSubmit={submit} noValidate>
+              <form
+                className="application-form application-form-step-two"
+                onSubmit={submit}
+                noValidate
+              >
                 <div className="application-field-row">
                   <div>
                     <label>What brand do you want to build?</label>
@@ -223,17 +247,25 @@ export default function ApplicationOverlay({ open, onClose }) {
                 <div className="application-field-row">
                   <div>
                     <label>What profession or business are you in?</label>
-                    <input name="profession" placeholder="Example: Dermatologist, Interior Designer, Startup" />
+                    <input
+                      name="profession"
+                      placeholder="Example: Dermatologist, Interior Designer, Startup"
+                    />
                   </div>
                   <div>
                     <label>Instagram / LinkedIn (optional)</label>
-                    <input name="social" placeholder="@handle or profile link" />
+                    <input
+                      name="social"
+                      placeholder="@handle or profile link"
+                    />
                   </div>
                 </div>
 
                 <div className="application-field-row">
                   <div>
-                    <label>What are your primary expectations from our services?</label>
+                    <label>
+                      What are your primary expectations from our services?
+                    </label>
                     <select name="expectations">
                       <option value="">Select your primary expectation</option>
                       <option>Visibility</option>
@@ -243,7 +275,10 @@ export default function ApplicationOverlay({ open, onClose }) {
                     </select>
                   </div>
                   <div>
-                    <label>Monthly revenue <span className="optional">(if company)</span></label>
+                    <label>
+                      Monthly revenue{" "}
+                      <span className="optional">(if company)</span>
+                    </label>
                     <select name="revenue">
                       <option value="">Select a range</option>
                       <option>₹1 lakh – ₹5 lakhs</option>
@@ -256,7 +291,10 @@ export default function ApplicationOverlay({ open, onClose }) {
                   </div>
                 </div>
 
-                <label>Are you comfortable investing ₹1 lakh + GST in personal branding?</label>
+                <label>
+                  Are you comfortable investing ₹1 lakh + GST in personal
+                  branding?
+                </label>
                 <select name="budget">
                   <option value="">Select an option</option>
                   <option>Yes, ₹1 lakh + GST is within my budget</option>
@@ -275,7 +313,10 @@ export default function ApplicationOverlay({ open, onClose }) {
                 >
                   ← Edit your details
                 </button>
-                <button className="btn form-submit application-primary-action" type="submit">
+                <button
+                  className="btn form-submit application-primary-action"
+                  type="submit"
+                >
                   Submit Application <span>→</span>
                 </button>
               </form>
@@ -285,9 +326,19 @@ export default function ApplicationOverlay({ open, onClose }) {
           <div className="application-success">
             <span className="application-success-icon">✓</span>
             <div className="eyebrow">Application received</div>
-            <h2>Thank <span className="highlight">you.</span></h2>
-            <p>We’ve received your application. Our team will review it and reach out on WhatsApp.</p>
-            <button className="btn application-primary-action" onClick={onClose}>Back to Socialdaa</button>
+            <h2>
+              Thank <span className="highlight">you.</span>
+            </h2>
+            <p>
+              We’ve received your application. Our team will review it and reach
+              out on WhatsApp.
+            </p>
+            <button
+              className="btn application-primary-action"
+              onClick={onClose}
+            >
+              Back to Socialdaa
+            </button>
           </div>
         )}
       </div>
