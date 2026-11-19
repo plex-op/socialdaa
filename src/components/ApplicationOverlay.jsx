@@ -90,6 +90,19 @@ export default function ApplicationOverlay({ open, onClose }) {
     setStep(2);
   }
 
+  function nextBrandStep(event) {
+    event.preventEvent?.();
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const profession = String(data.get("profession") || "").trim();
+
+    if (!profession)
+      return setError("Please tell us what profession or business you are in.");
+
+    setError("");
+    setStep(3);
+  }
+
   function submit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -167,9 +180,14 @@ export default function ApplicationOverlay({ open, onClose }) {
                   : "A few details to understand your brand and goals."}
               </p>
               <div className="application-progress">
-                <span className={step === 1 ? "active" : ""}>1</span>
-                <i />
-                <span className={step === 2 ? "active" : ""}>2</span>
+                {[1, 2, 3].map((number) => (
+                  <span
+                    className={step === number ? "active" : ""}
+                    key={number}
+                  >
+                    {number}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -216,10 +234,10 @@ export default function ApplicationOverlay({ open, onClose }) {
                   No fee. No hidden charges.
                 </p>
               </form>
-            ) : (
+            ) : step === 2 ? (
               <form
                 className="application-form application-form-step-two"
-                onSubmit={submit}
+                onSubmit={nextBrandStep}
                 noValidate
               >
                 <label>What brand do you want to build?</label>
@@ -248,6 +266,30 @@ export default function ApplicationOverlay({ open, onClose }) {
                 <label>Instagram / LinkedIn (optional)</label>
                 <input name="social" placeholder="@handle or profile link" />
 
+                <div className="form-error">{error}</div>
+                <button
+                  className="application-back-step"
+                  type="button"
+                  onClick={() => {
+                    setError("");
+                    setStep(1);
+                  }}
+                >
+                  ← Edit your details
+                </button>
+                <button
+                  className="btn form-submit application-primary-action"
+                  type="submit"
+                >
+                  Continue <span>→</span>
+                </button>
+              </form>
+            ) : (
+              <form
+                className="application-form application-form-step-two"
+                onSubmit={submit}
+                noValidate
+              >
                 <label>
                   What are your primary expectations from our services?
                 </label>
@@ -292,10 +334,10 @@ export default function ApplicationOverlay({ open, onClose }) {
                   type="button"
                   onClick={() => {
                     setError("");
-                    setStep(1);
+                    setStep(2);
                   }}
                 >
-                  ← Edit your details
+                  ← Edit brand details
                 </button>
                 <button
                   className="btn form-submit application-primary-action"

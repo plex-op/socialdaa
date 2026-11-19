@@ -22,13 +22,7 @@ function App() {
   const [floatingVisible, setFloatingVisible] = useState(false);
 
   useEffect(() => {
-    const updateFloatingCta = () => {
-      setFloatingVisible(window.scrollY > window.innerHeight * 0.8);
-    };
-
-    updateFloatingCta();
-    window.addEventListener("scroll", updateFloatingCta, { passive: true });
-    return () => window.removeEventListener("scroll", updateFloatingCta);
+    setFloatingVisible(true);
   }, []);
 
   useEffect(() => {

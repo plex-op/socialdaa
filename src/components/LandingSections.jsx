@@ -1,33 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export function StatementSection() {
-  const ref = useRef(null);
-  useEffect(() => {
-    if (!ref.current) return;
-    const text = ref.current.textContent.trim();
-    ref.current.innerHTML = text
-      .split(/\s+/)
-      .map((word) => `<span>${word}</span>`)
-      .join(" ");
-    const update = () => {
-      const rect = ref.current.getBoundingClientRect();
-      const progress =
-        (innerHeight * 0.85 - rect.top) / (rect.height + innerHeight * 0.3);
-      const visible = Math.round(
-        Math.max(0, Math.min(1, progress)) * ref.current.children.length,
-      );
-      Array.from(ref.current.children).forEach((word, index) =>
-        word.classList.toggle("on", index < visible),
-      );
-    };
-    update();
-    addEventListener("scroll", update, { passive: true });
-    return () => removeEventListener("scroll", update);
-  }, []);
   return (
     <section>
       <div className="wrap">
-        <p ref={ref} className="scrub">
+        <p className="scrub">
           You know your name should carry weight. What’s missing isn’t talent.
           It’s the time, the team and a system to do it properly.
         </p>
