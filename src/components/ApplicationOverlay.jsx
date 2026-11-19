@@ -122,9 +122,7 @@ export default function ApplicationOverlay({ open, onClose }) {
 
           <div className="application-testimonial" key={testimonialIndex}>
             <span className="application-testimonial-label">Client story</span>
-            <blockquote>
-              “{testimonials[testimonialIndex].quote}”
-            </blockquote>
+            <blockquote>“{testimonials[testimonialIndex].quote}”</blockquote>
             <div className="application-testimonial-person">
               <strong>{testimonials[testimonialIndex].name}</strong>
               <small>{testimonials[testimonialIndex].role}</small>

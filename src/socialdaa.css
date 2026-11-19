@@ -1030,8 +1030,12 @@ footer a {
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: linear-gradient(145deg, rgba(220,177,74,.08), rgba(255,255,255,.025));
-  animation: applicationFade .5s ease both;
+  background: linear-gradient(
+    145deg,
+    rgba(220, 177, 74, 0.08),
+    rgba(255, 255, 255, 0.025)
+  );
+  animation: applicationFade 0.5s ease both;
 }
 .application-testimonial-label {
   display: block;
@@ -1039,25 +1043,36 @@ footer a {
   color: var(--gold);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: .18em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 .application-testimonial blockquote {
   margin: 0;
   font-size: clamp(18px, 2vw, 23px);
   line-height: 1.48;
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
 }
 .application-testimonial-person {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 }
-.application-testimonial-person strong { font-size: 14px; }
-.application-testimonial-person small { margin-top: 3px; color: var(--muted); }
+.application-testimonial-person strong {
+  font-size: 14px;
+}
+.application-testimonial-person small {
+  margin-top: 3px;
+  color: var(--muted);
+}
 @keyframes applicationFade {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 @media (max-width: 860px) {
   section {
