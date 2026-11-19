@@ -603,7 +603,7 @@ footer a {
   overflow-y: auto;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
-  background: #08080b;
+  background: linear-gradient(145deg, #17171d, #0b0b0e);
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58);
 }
 .application-close {
@@ -615,13 +615,14 @@ footer a {
   height: 42px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
-  background: #111114;
+  background: #111116;
   color: #fff;
   font-size: 26px;
   line-height: 1;
 }
 .application-modal-header {
   padding: 10px 18px 2px;
+  border-bottom: 1px solid rgba(220, 177, 74, 0.12);
 }
 .application-kicker {
   display: block;
@@ -651,26 +652,29 @@ footer a {
 .application-form label {
   display: block;
   margin: 9px 0 6px;
-  color: #929bb0;
+  color: #e0c98b;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .application-form input,
-.application-form select {
+.application-form select,
+.application-phone-field > span {
   width: 100%;
   min-height: 48px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  background: #0a0a0d;
+  background: #1a1a20;
   color: #fff;
 }
 .application-form input:focus,
 .application-form select:focus {
   outline: none;
   border-color: var(--gold);
+  background: #202027;
+  box-shadow: 0 0 0 3px rgba(220, 177, 74, 0.12);
 }
 .application-phone-field {
   display: grid;
@@ -689,7 +693,7 @@ footer a {
 }
 .application-primary-action {
   background: var(--gg);
-  box-shadow: 0 14px 34px rgba(40, 198, 167, 0.16);
+  box-shadow: 0 16px 38px rgba(220, 177, 74, 0.22);
   color: #111;
 }
 .application-primary-action span {
@@ -719,6 +723,7 @@ footer a {
   border-color: var(--gold);
   background: var(--gg);
   color: #111;
+  box-shadow: 0 0 18px rgba(220, 177, 74, 0.22);
 }
 .application-progress i {
   width: 54px;
@@ -1298,10 +1303,6 @@ footer a {
   .application-form,
   .application-form-step-two {
     padding: 6px 18px 18px;
-  }
-  .application-form-step-two .application-back-step {
-    min-height: 24px;
-    margin: 8px auto 4px;
   }
   .application-form-step_two .form-submit {
     width: 100%;
