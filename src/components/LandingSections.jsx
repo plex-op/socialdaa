@@ -149,8 +149,8 @@ export function AudienceSection() {
             <h2>Who Socialdaa is for</h2>
           </div>
           <p>
-            For people who already have valuable expertise - and want it to reach
-            the market clearly and consistently.
+            For people who already have valuable expertise - and want it to
+            reach the market clearly and consistently.
           </p>
         </div>
         <div className="audience-grid">

@@ -3,6 +3,46 @@ import { useEffect, useState } from "react";
 export default function ApplicationOverlay({ open, onClose }) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+
+  const testimonials = [
+    {
+      quote:
+        "Reaching 100K followers in just 29 reels felt surreal. One reel crossed 15.7 million views and brought in 35K followers in two days.",
+      name: "Dr. Abinaya Vijayan",
+      role: "Fertility Specialist",
+    },
+    {
+      quote:
+        "Crossing 100K wouldn't have been possible without Socialdaa. From scripting and videography to editing, everyone played a crucial role.",
+      name: "Swathi",
+      role: "Architect & Luxury Interior Designer",
+    },
+    {
+      quote:
+        "Hitting 100K followers in just 2 months has been an incredible journey. We didn't miss the mark - we nailed it.",
+      name: "Dr. Hanan",
+      role: "Dermatologist",
+    },
+    {
+      quote:
+        "Crossing 100K has been amazing. The team made every shoot seamless, fun and completely worthwhile.",
+      name: "Dr. Surya",
+      role: "Dermatologist",
+    },
+    {
+      quote:
+        "Partnering with Socialdaa took us to 100K in a record-breaking 13 videos and now past 200K.",
+      name: "Dr. Sakthivel Sivasubramanian",
+      role: "Chief Endocrinologist",
+    },
+    {
+      quote:
+        "Crossing 100K on my personal page is a huge step toward 1 million. Team Socialdaa has been my biggest support.",
+      name: "Arun Annadurai",
+      role: "Creator & Entrepreneur",
+    },
+  ];
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -10,6 +50,14 @@ export default function ApplicationOverlay({ open, onClose }) {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const timer = window.setInterval(() => {
+      setTestimonialIndex((current) => (current + 1) % testimonials.length);
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [open, testimonials.length]);
 
   if (!open) return null;
 
@@ -34,7 +82,9 @@ export default function ApplicationOverlay({ open, onClose }) {
     if (!budget)
       return setError("Please answer the package investment question.");
     if (!expectations)
-      return setError("Please select your primary expectation from our services.");
+      return setError(
+        "Please select your primary expectation from our services.",
+      );
     if (!profession)
       return setError("Please tell us what profession or business you are in.");
 
@@ -69,6 +119,17 @@ export default function ApplicationOverlay({ open, onClose }) {
             <li>Selected applicants get a strategy call.</li>
             <li>Socialdaa packages start from ₹1 lakh + GST.</li>
           </ul>
+
+          <div className="application-testimonial" key={testimonialIndex}>
+            <span className="application-testimonial-label">Client story</span>
+            <blockquote>
+              “{testimonials[testimonialIndex].quote}”
+            </blockquote>
+            <div className="application-testimonial-person">
+              <strong>{testimonials[testimonialIndex].name}</strong>
+              <small>{testimonials[testimonialIndex].role}</small>
+            </div>
+          </div>
         </div>
 
         {!submitted ? (
@@ -101,7 +162,10 @@ export default function ApplicationOverlay({ open, onClose }) {
               <option>Fashion / Lifestyle</option>
             </select>
             <label>What profession or business are you in?</label>
-            <input name="profession" placeholder="Example: Dermatologist, Interior Designer, Startup" />
+            <input
+              name="profession"
+              placeholder="Example: Dermatologist, Interior Designer, Startup"
+            />
             <label>What are your primary expectations from our services?</label>
             <select name="expectations">
               <option value="">Select your primary expectation</option>
