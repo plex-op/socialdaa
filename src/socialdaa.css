@@ -1272,7 +1272,12 @@ footer a {
     min-height: 300px;
   }
   .hero-glow {
-    background: linear-gradient(180deg, transparent 20%, rgba(0, 0, 0, 0.2) 55%, #000 100%);
+    background: linear-gradient(
+      180deg,
+      transparent 20%,
+      rgba(0, 0, 0, 0.2) 55%,
+      #000 100%
+    );
   }
   .top {
     width: 100%;
