@@ -25,11 +25,13 @@ export function Header({ onApply }) {
           Attention: founders, CXOs &amp; experts
         </div>
         <h1>
-          Your expertise deserves to be <span className="highlight">seen.</span>
+          We Turn Founders Into{" "}
+          <span className="highlight">Instagram Authorities.</span>
         </h1>
         <p className="sub">
-          We build personal brands that earn trust, create authority and turn
-          attention into real opportunities.
+          We build personal brands that earn trust, create authority and
+          <br />
+          turn attention into real opportunities.
         </p>
         <p className="tagline">Unga expertise-ku oru strong, trusted face.</p>
         <p className="service-line">Strategy · Scripting · Shoot · Editing</p>

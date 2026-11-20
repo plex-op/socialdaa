@@ -1,4 +1,11 @@
 import { useRef, useState } from "react";
+import drMokanalakshmiImage from "../assets/dr.mokanalakshmi_derm.jpg";
+import glowRoshImage from "../assets/glow_rosh.jpg";
+import coachRakaniyaImage from "../assets/coach_rakaniya.jpg";
+import drHananImage from "../assets/dr_hanan_derm.jpg";
+import arunAnnaduraiImage from "../assets/arunannadurai.jpg";
+import madhuKumareshImage from "../assets/madhu_kumaresh.jpg";
+import drSwatiImage from "../assets/dr.swati.jpg";
 
 export function StatementSection() {
   return (
@@ -14,16 +21,247 @@ export function StatementSection() {
 }
 
 export function UrgencySection() {
+  const growthCases = [
+    {
+      name: "glow.rosh",
+      role: "Glow with Rosh · Founder",
+      experience: "Nature | Skincare | Organic",
+      posts: "87 posts",
+      followers: "150K followers",
+      following: "1 following",
+      before: "0",
+      after: "100K",
+      growth: "100K",
+      timeline: "1 Month",
+      initials: "GR",
+      image: glowRoshImage,
+    },
+    {
+      name: "coach_rakaniya",
+      role: "Coach · Rakaniya",
+      experience: "Lead a Healthy Active Lifestyle",
+      posts: "225 posts",
+      followers: "107K followers",
+      following: "151 following",
+      before: "0",
+      after: "100K",
+      growth: "100K",
+      timeline: "3 Months",
+      initials: "CR",
+      image: coachRakaniyaImage,
+    },
+    {
+      name: "dr.mokanalakshmi_derm",
+      role: "Dr. R. M. Mokanalakshmi · Dermatologist",
+      experience: "Dermatologist | Hair Transplant Surgeon",
+      posts: "397 posts",
+      followers: "1M followers",
+      following: "8 following",
+      before: "0",
+      after: "100K",
+      growth: "100K",
+      timeline: "13 Reels",
+      initials: "DM",
+      image: drMokanalakshmiImage,
+    },
+    {
+      name: "dr.hanan_derm",
+      role: "Dr. Amin Hanan · Dermatologist",
+      experience: "Dermatologist · Hair Transplant · Dermatology Clinic",
+      posts: "460 posts",
+      followers: "412K followers",
+      following: "639 following",
+      before: "0",
+      after: "100K",
+      growth: "100K",
+      timeline: "2 Months",
+      initials: "DH",
+      image: drHananImage,
+    },
+
+    {
+      name: "arunannadurai_official",
+      role: "Arun Annadurai · Digital Creator",
+      experience: "Fun | Life Lessons | Food",
+      posts: "190 posts",
+      followers: "161K followers",
+      following: "1,903 following",
+      before: "42K",
+      after: "100K",
+      growth: "58K",
+      timeline: "3 Months",
+      initials: "AA",
+      image: arunAnnaduraiImage,
+    },
+    {
+      name: "madhu_kumaresh",
+      role: "Madhu Kumaresh · Entrepreneur",
+      experience: "Founder · Tanjore Paintings · Motivational Speaker",
+      posts: "132 posts",
+      followers: "181K followers",
+      following: "1 following",
+      before: "0",
+      after: "100K",
+      growth: "100K",
+      timeline: "3 Months",
+      initials: "MK",
+      image: madhuKumareshImage,
+    },
+    {
+      name: "dr.swati_netaji",
+      role: "Dr. Swati Netaji · Dermatologist",
+      experience: "Dermatology | Cosmetology",
+      posts: "250 posts",
+      followers: "300K followers",
+      following: "50 following",
+      before: "10K",
+      after: "100K",
+      growth: "90K",
+      timeline: "6 Months",
+      initials: "DS",
+      image: drSwatiImage,
+    },
+    {
+      name: "Dr. Abinaya Vijayan",
+      role: "Fertility Specialist",
+      experience: "Medical expertise to a trusted brand",
+      posts: "29 reels",
+      followers: "100K followers",
+      following: "Growing organically",
+      before: "31K",
+      after: "202K",
+      growth: "171K",
+      timeline: "29 Reels",
+      // views: "35K Followers in 2 Days",
+      // niche: "Medical Authority",
+      // reel: "High-Impact Reels",
+      // initials: "AV",
+    },
+    {
+      name: "Tech with Kavitha",
+      role: "Technology Creator",
+      experience: "Clear, consistent tech storytelling",
+      posts: "Growth case",
+      followers: "100K followers",
+      following: "Organic growth",
+      before: "0",
+      after: "100K",
+      growth: "100K",
+      timeline: "6 Months",
+      // views: "Consistent Organic Reach",
+      // niche: "Category Expertise",
+      // reel: "Educational Reels",
+      // initials: "TK",
+    },
+  ];
+
+  const [growthIndex, setGrowthIndex] = useState(0);
+
+  const moveGrowthCase = (step) => {
+    setGrowthIndex(
+      (current) => (current + step + growthCases.length) % growthCases.length,
+    );
+  };
+
+  const item = growthCases[growthIndex];
+
   return (
     <section className="urgency-section">
       <div className="wrap">
-        <div className="urgency-grid urgency-grid-simple">
+        <div className="urgency-grid">
           <div>
             <div className="eyebrow">Your market is not waiting</div>
             <h2>
               Your competitors are becoming familiar.{" "}
               <span className="highlight">Are you?</span>
             </h2>
+          </div>
+
+          <div className="growth-case-wrap">
+            <div className="growth-case-heading">Our works</div>
+            <article className="growth-case" key={item.name}>
+              <div className="growth-profile">
+                <div className="growth-profile-avatar">
+                  {item.image ? (
+                    <img src={item.image} alt={item.name} />
+                  ) : (
+                    item.initials
+                  )}
+                </div>
+                <div className="growth-profile-copy">
+                  <strong>{item.name}</strong>
+                  <span>
+                    {item.role} · {item.experience}
+                  </span>
+                  <small>
+                    {item.posts} · {item.followers} · {item.following}
+                  </small>
+                </div>
+              </div>
+
+              {/* <div className="growth-pills">
+                <span>♙ {item.niche}</span>
+                <span>🔥 {item.views}</span>
+                <span>⚡ {item.reel}</span>
+              </div> */}
+
+              <div className="growth-stats">
+                <div>
+                  <small>BEFORE</small>
+                  <strong>{item.before}</strong>
+                  <span>
+                    {item.before === "0"
+                      ? "Started from scratch"
+                      : "Before Socialdaa"}
+                  </span>
+                </div>
+                <div>
+                  <small>AFTER</small>
+                  <strong className="growth-pink">↗ {item.after}</strong>
+                  <span>followers</span>
+                </div>
+                <div>
+                  <small>GROWTH</small>
+                  <strong className="growth-pink">{item.growth}</strong>
+                  <span>in growth period</span>
+                </div>
+                <div>
+                  <small>TIMELINE</small>
+                  <strong>{item.timeline}</strong>
+                  <span className="growth-pink">RESULT</span>
+                </div>
+              </div>
+
+              <div className="growth-controls">
+                <div>
+                  {growthCases.map((caseItem, index) => (
+                    <button
+                      type="button"
+                      className={index === growthIndex ? "active" : ""}
+                      key={caseItem.name}
+                      aria-label={`Show ${caseItem.name} growth case`}
+                      onClick={() => setGrowthIndex(index)}
+                    />
+                  ))}
+                </div>
+                <span>
+                  <button
+                    type="button"
+                    aria-label="Previous growth case"
+                    onClick={() => moveGrowthCase(-1)}
+                  >
+                    ←
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next growth case"
+                    onClick={() => moveGrowthCase(1)}
+                  >
+                    →
+                  </button>
+                </span>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -33,10 +271,10 @@ export function UrgencySection() {
 
 export function ProcessSection() {
   const metrics = [
-    ["2M+", "Followers"],
-    ["400M+", "Organic Views"],
-    ["12,000+", "Leads"],
-    ["2,500+", "Content Delivered"],
+    ["12M+", "Followers"],
+    ["5B+", "Organic Views"],
+    // ["12,000+", "Leads"],
+    ["25,000+", "Content Delivered"],
   ];
 
   return (
@@ -46,9 +284,9 @@ export function ProcessSection() {
           <div className="how-title">
             <div className="eyebrow">Our approach</div>
             <h2>
-              How we
+              What we
               <br />
-              do it?
+              do
             </h2>
           </div>
 
@@ -127,11 +365,6 @@ export function AudienceSection() {
 export function WorkSection({ onApply }) {
   const videos = [
     {
-      name: "Swathi",
-      role: "Architect & Luxury Interior Designer",
-      src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/Swatrhi%20mam%20100k%20remastered.mp4",
-    },
-    {
       name: "Dr. Abinaya Vijayan",
       role: "100K followers in 29 reels",
       src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/100k%20Followers%20in%2029%20Reels!%20__%20Real%20OG%20@dr.abinaya_vijayan%20%E2%9D%A4%EF%B8%8F%E2%AD%90%EF%B8%8F%20Sometimes%20the%20universe%20gives%20y.mp4",
@@ -140,6 +373,11 @@ export function WorkSection({ onApply }) {
       name: "Dr. Hanan",
       role: "100K followers in 2 months",
       src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/Here%20we%20go%20100k%20in%20just%202%20Months%20%E2%9C%A8%E2%9D%A4%EF%B8%8FNext%20Stop%20500k%20_The%20Hardwork%20,%20The%20Late%20Night%20Shoots%20,%20Mana.mp4",
+    },
+    {
+      name: "Swathi",
+      role: "Architect & Luxury Interior Designer",
+      src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/Swatrhi%20mam%20100k%20remastered.mp4",
     },
   ];
 
