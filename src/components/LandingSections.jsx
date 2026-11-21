@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import foundersImage from "../assets/founders.jpg";
+import teamImage from "../assets/team.jpg";
 import drMokanalakshmiImage from "../assets/dr.mokanalakshmi_derm.jpg";
 import glowRoshImage from "../assets/glow_rosh.jpg";
 import coachRakaniyaImage from "../assets/coach_rakaniya.jpg";
@@ -285,9 +285,9 @@ export function ProcessSection() {
           <div className="how-title">
             <div className="eyebrow">Our approach</div>
             <h2>
-              What we
+              Our Track
               <br />
-              do
+              Record
             </h2>
           </div>
 
@@ -305,9 +305,11 @@ export function ProcessSection() {
 
           <div className="how-story">
             <div className="how-portraits">
-              <div className="portrait portrait-team">[Team photo]</div>
-              <div className="portrait portrait-founder">
-                <img src={foundersImage} alt="The Socialdaa founders" />
+              <div className="portrait portrait-team">
+                <img
+                  src={teamImage}
+                  alt="The Socialdaa team outside the Socialdaa office"
+                />
               </div>
             </div>
             <p>

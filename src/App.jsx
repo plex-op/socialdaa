@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import { Header } from "./components/Header.jsx";
 import ApplicationOverlay from "./components/ApplicationOverlay.jsx";
@@ -23,6 +23,25 @@ import ThankYou from "./pages/ThankYou.jsx";
 import LeadsDashboard from "./pages/LeadsDashboard.jsx";
 
 import "./socialdaa.css";
+
+function MetaPixelRouteViews() {
+  const location = useLocation();
+  const previousPage = useRef(`${location.pathname}${location.search}`);
+
+  useEffect(() => {
+    const currentPage = `${location.pathname}${location.search}`;
+
+    if (currentPage !== previousPage.current) {
+      previousPage.current = currentPage;
+
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "PageView");
+      }
+    }
+  }, [location.pathname, location.search]);
+
+  return null;
+}
 
 function Home() {
   const [applicationOpen, setApplicationOpen] = useState(false);
@@ -88,11 +107,14 @@ function Home() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/thank-you" element={<ThankYou />} />
-      <Route path="/dashboard" element={<LeadsDashboard />} />
-    </Routes>
+    <>
+      <MetaPixelRouteViews />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/dashboard" element={<LeadsDashboard />} />
+      </Routes>
+    </>
   );
 }
 
