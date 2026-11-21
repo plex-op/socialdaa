@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import teamImage from "../assets/team.jpg";
 import drMokanalakshmiImage from "../assets/dr.mokanalakshmi_derm.jpg";
 import glowRoshImage from "../assets/glow_rosh.jpg";
@@ -384,9 +384,64 @@ export function WorkSection({ onApply }) {
       role: "Architect & Luxury Interior Designer",
       src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/Swatrhi%20mam%20100k%20remastered.mp4",
     },
+    // {
+    //   name: "DR. Surya",
+    //   role: "Dermatologist",
+    //   src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/100K%20isnt%20luck.%20Its%20consistency_Congratulations%20maam%20@dr.suryaderm!%E2%9D%A4%EF%B8%8FHappy%20to%20witness%20this%20j.mp4?updatedAt=1795070949728",
+    // },
+    // {
+    //   name: "Arun Annadurai",
+    //   role: "Creator & Entrepreneur",
+    //   src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/Wholesome%20100k%20_%E2%9D%A4%EF%B8%8F_%20@arunannadurai_official%20Next%20Stop%20500k!%20Poiteeeey%20irukanum.One%20of%20our%20fav%20.mp4?updatedAt=1795255637223",
+    // },
+    // {
+    //   name: "Dr. Sakthivel Sivasubramanian",
+    //   role: "Chief Endocrinologist",
+    //   src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/100k%20in%2013%20Reels%20_%E2%9D%A4%EF%B8%8FSakthiiii%20sir%20you%20beauty!%20The%20Universe%20gave%20you%20what%20you%20exactly%20wanted.You.mp4?updatedAt=1795255810768",
+    // },
+    // {
+    //   name: "Dr. Siva Priya",
+    //   role: "Aesthetic Doctor",
+    //   src: "https://ik.imagekit.io/ohcrl5hvv/Testimonial%20PB/Atlast%20100k%20Family%20%E2%9D%A4%EF%B8%8FWasnt%20a%20easy%20ride%20but%20we%20made%20it%20look%20easy.Your%20Fun%20,%20Energy%20,%20Enthusiasm%20.mp4?updatedAt=1795256381883",
+    // },
   ];
 
   const [playingIndex, setPlayingIndex] = useState(-1);
+  const [canScrollPrevious, setCanScrollPrevious] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+  const reelsRef = useRef(null);
+
+  useEffect(() => {
+    const reels = reelsRef.current;
+    if (!reels) return;
+
+    const updateScrollControls = () => {
+      setCanScrollPrevious(reels.scrollLeft > 1);
+      setCanScrollNext(
+        reels.scrollLeft + reels.clientWidth < reels.scrollWidth - 1,
+      );
+    };
+
+    reels.addEventListener("scroll", updateScrollControls, { passive: true });
+    window.addEventListener("resize", updateScrollControls);
+
+    return () => {
+      reels.removeEventListener("scroll", updateScrollControls);
+      window.removeEventListener("resize", updateScrollControls);
+    };
+  }, []);
+
+  const scrollReels = (direction) => {
+    const reels = reelsRef.current;
+    const firstReel = reels?.querySelector(".reel");
+    if (!reels || !firstReel) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(reels).columnGap);
+    reels.scrollBy({
+      left: direction * (firstReel.getBoundingClientRect().width + (gap || 0)),
+      behavior: "smooth",
+    });
+  };
 
   const togglePlayback = (event, index) => {
     event.stopPropagation();
@@ -419,7 +474,7 @@ export function WorkSection({ onApply }) {
           The growth they achieved{" "}
           <span className="highlight">with Socialdaa.</span>
         </h2>
-        <div className="reels">
+        <div className="reels" ref={reelsRef}>
           {videos.map((video, index) => (
             <div
               className="reel"
@@ -466,6 +521,25 @@ export function WorkSection({ onApply }) {
               </span>
             </div>
           ))}
+        </div>
+        <div className="work-carousel-controls" aria-label="Video carousel">
+          <button
+            type="button"
+            aria-label="Previous videos"
+            onClick={() => scrollReels(-1)}
+            disabled={!canScrollPrevious}
+          >
+            ←
+          </button>
+          <span>More client stories</span>
+          <button
+            type="button"
+            aria-label="Next videos"
+            onClick={() => scrollReels(1)}
+            disabled={!canScrollNext}
+          >
+            →
+          </button>
         </div>
         <p className="tap">Tap a milestone to watch their story with sound</p>
         <button className="btn" onClick={onApply}>
