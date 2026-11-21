@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import foundersImage from "../assets/founders.jpg";
 import drMokanalakshmiImage from "../assets/dr.mokanalakshmi_derm.jpg";
 import glowRoshImage from "../assets/glow_rosh.jpg";
 import coachRakaniyaImage from "../assets/coach_rakaniya.jpg";
@@ -305,7 +306,9 @@ export function ProcessSection() {
           <div className="how-story">
             <div className="how-portraits">
               <div className="portrait portrait-team">[Team photo]</div>
-              <div className="portrait portrait-founder">[Founder photo]</div>
+              <div className="portrait portrait-founder">
+                <img src={foundersImage} alt="The Socialdaa founders" />
+              </div>
             </div>
             <p>
               Like How Thalaivar says “Enga Valzhi thami vazhi” - we do it in

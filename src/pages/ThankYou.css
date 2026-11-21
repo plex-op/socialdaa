@@ -186,19 +186,6 @@
   box-shadow: 0 8px 25px rgba(214, 173, 61, 0.2);
 }
 
-.thank-you-dashboard-link {
-  display: inline-block;
-  margin-top: 20px;
-  color: #d8b044;
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.thank-you-dashboard-link:hover {
-  color: #f0dc91;
-}
-
 /* FOOTER */
 
 .thank-you-footer {

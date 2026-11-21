@@ -55,10 +55,6 @@ export default function ThankYou() {
           Back to Home →
         </Link>
 
-        <Link to="/dashboard" className="thank-you-dashboard-link">
-          View lead dashboard
-        </Link>
-
         <p className="thank-you-footer">
           SOCIALDAA · BUILD YOUR PERSONAL BRAND
         </p>

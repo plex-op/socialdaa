@@ -621,8 +621,7 @@
 .dashboard-export-button:focus-visible,
 .dashboard-nav-item:focus-visible,
 .dashboard-website-link:focus-visible,
-.dashboard-empty-link:focus-visible,
-.thank-you-dashboard-link:focus-visible {
+.dashboard-empty-link:focus-visible {
   outline: 2px solid var(--dashboard-gold);
   outline-offset: 3px;
 }
