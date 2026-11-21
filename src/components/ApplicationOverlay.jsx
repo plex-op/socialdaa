@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { saveLead } from "../leads.js";
 
 export default function ApplicationOverlay({ open, onClose }) {
   const navigate = useNavigate();
@@ -160,6 +161,13 @@ export default function ApplicationOverlay({ open, onClose }) {
       budget,
     };
 
+    try {
+      saveLead(finalApplicationData);
+    } catch {
+      setError("We couldn't save your application. Please try again.");
+      return;
+    }
+
     setError("");
 
     // Google Analytics tracking
@@ -175,8 +183,6 @@ export default function ApplicationOverlay({ open, onClose }) {
     if (typeof window.fbq === "function") {
       window.fbq("track", "Lead");
     }
-
-    console.log("Final Application Data:", finalApplicationData);
 
     // Redirect to separate Thank You page
     navigate("/thank-you", {

@@ -25,8 +25,7 @@ export function Header({ onApply }) {
           Attention: founders, CXOs &amp; experts
         </div>
         <h1>
-          We Turn Founders Into{" "}
-          <span className="highlight">Instagram Authorities.</span>
+          We Turn Founders Into <span className="highlight">Authorities.</span>
         </h1>
         <p className="sub">
           We build personal brands that earn trust, create authority and

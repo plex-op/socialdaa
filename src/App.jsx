@@ -20,6 +20,7 @@ import {
 } from "./components/LandingSections.jsx";
 
 import ThankYou from "./pages/ThankYou.jsx";
+import LeadsDashboard from "./pages/LeadsDashboard.jsx";
 
 import "./socialdaa.css";
 
@@ -90,6 +91,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/thank-you" element={<ThankYou />} />
+      <Route path="/dashboard" element={<LeadsDashboard />} />
     </Routes>
   );
 }
