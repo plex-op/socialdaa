@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./ThankYou.css";
 
 export default function ThankYou() {
   const location = useLocation();
   const application = location.state?.application;
+  const submissionTracked = useRef(false);
+
+  useEffect(() => {
+    if (
+      !application ||
+      submissionTracked.current ||
+      typeof window.fbq !== "function"
+    ) {
+      return;
+    }
+
+    window.fbq("track", "SubmitApplication");
+    submissionTracked.current = true;
+  }, [application]);
 
   return (
     <div className="thank-you-page">
