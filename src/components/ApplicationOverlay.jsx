@@ -305,7 +305,7 @@ export default function ApplicationOverlay({ open, onClose }) {
             <select name="brand" defaultValue={brandData.brand}>
               <option value="Personal brand">Personal brand</option>
 
-              <option value="Company brand">Company brand</option>
+              <option value="Company brand">Business Branding</option>
             </select>
 
             <label>I am a…</label>
@@ -328,7 +328,7 @@ export default function ApplicationOverlay({ open, onClose }) {
               defaultValue={brandData.profession}
             />
 
-            <label>Instagram / LinkedIn (optional)</label>
+            <label>Instagram / LinkedIn</label>
 
             <input
               name="social"
@@ -404,12 +404,11 @@ export default function ApplicationOverlay({ open, onClose }) {
             >
               <option value="">Select a range</option>
 
-              <option>₹1 lakh – ₹5 lakhs</option>
-              <option>₹5 lakhs – ₹10 lakhs</option>
-              <option>₹10 lakhs – ₹15 lakhs</option>
-              <option>₹15 lakhs – ₹20 lakhs</option>
-              <option>₹20 lakhs – ₹25 lakhs</option>
-              <option>₹25 lakhs+</option>
+              <option>₹10 lakh – ₹20 lakhs</option>
+              <option>₹20 lakh – ₹30 lakhs</option>
+              <option>₹30 lakh – ₹40 lakhs</option>
+              <option>₹40 lakh – ₹50 lakhs</option>
+              <option>₹50 lakh – ₹1 crore</option>
             </select>
 
             <label>
